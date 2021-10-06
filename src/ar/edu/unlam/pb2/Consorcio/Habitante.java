@@ -1,16 +1,26 @@
 package ar.edu.unlam.pb2.Consorcio;
 
 public class Habitante {
-
+	
+	//si es de tipo inquilino tiene un contrato por x cantidad de meses
+	
 	private Integer dni;
 	private String nombre;
 	private String apellido;
 	private Departamento departamento;
 	private Boolean EstadoDeExpensas;
-	private TipoDeHabitante tipo;
+	// private TipoDeHabitante tipo;
 	
-	public Habitante() {
-		// TODO Auto-generated constructor stub
+	
+	public Habitante(Integer dni, String nombre, String apellido, Departamento departamento, Boolean estadoDeExpensas) {
+		super();
+		this.dni = dni;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.departamento = departamento;
+		EstadoDeExpensas = estadoDeExpensas;
 	}
+	
+	
 
 }
