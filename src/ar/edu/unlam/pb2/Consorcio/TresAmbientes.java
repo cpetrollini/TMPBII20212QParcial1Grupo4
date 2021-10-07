@@ -2,16 +2,42 @@ package ar.edu.unlam.pb2.Consorcio;
 
 public class TresAmbientes extends Departamento {
 
-	// 30%
-	public TresAmbientes() {
-		// TODO Auto-generated constructor stub
+	private Integer pagoExtraordinario;// extras por mantenimiento
+	private Integer montoTotalAPagarServicios;// luz y agua
+	private Integer valorAPagarExpensas;
+	private final Integer EXTRA_COCHERA = 2000;
+	private final Integer EXTRA_TIPO_DE_DEPARTAMENTO_TRESAMBIENTES = 3000;
+
+	public TresAmbientes(Integer piso, Integer numero, Boolean cochera) {
+		super(piso, numero, cochera);
+
+		this.montoTotalAPagarServicios = 0;
+		this.pagoExtraordinario = pagoExtraordinario;
+		this.valorAPagarExpensas = 0;
+
+		setDepartamento(getDepartamento().TRESAMBIENTES);
+
 	}
 
 	@Override
+	public void serviciosComunesAPagar(Integer monto) {
+
+		super.serviciosComunesAPagar(monto);
+
+		this.montoTotalAPagarServicios = super.getServicioComunes() + this.pagoExtraordinario;
+	}
+
 	@Override
-	public Double valorDeExpensas() {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer PagoDeExpensas() {
+
+		if (super.getCochera()) {
+			this.valorAPagarExpensas += EXTRA_COCHERA;
+		}
+
+		this.valorAPagarExpensas += super.getVALOR_BASICO_EXPENSAS() + this.EXTRA_TIPO_DE_DEPARTAMENTO_TRESAMBIENTES
+				+ this.montoTotalAPagarServicios;
+
+		return this.valorAPagarExpensas;
 	}
 
 }

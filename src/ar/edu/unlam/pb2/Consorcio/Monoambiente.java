@@ -3,7 +3,7 @@ package ar.edu.unlam.pb2.Consorcio;
 public class Monoambiente extends Departamento {
 
 	private Integer pagoExtraordinario;// extras por mantenimiento
-	private int montoTotalAPagarServicios;// luz y agua
+	private Integer montoTotalAPagarServicios;// luz y agua
 	private Integer valorAPagarExpensas;
 	private final Integer EXTRA_COCHERA = 2000;
 	private final Integer EXTRA_TIPO_DE_DEPARTAMENTO_MONOAMBIENTE = 1000;
