@@ -1,4 +1,4 @@
-package ar.edu.unlampb2.Consorcio;
+package ar.edu.unlam.pb2.Consorcio;
 
 import static org.junit.Assert.*;
 
