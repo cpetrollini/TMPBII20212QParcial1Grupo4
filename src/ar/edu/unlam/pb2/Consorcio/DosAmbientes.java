@@ -16,7 +16,8 @@ public class DosAmbientes extends Departamento {
 
 		super.setTipoDepartamento(TipoDeDepartamento.DOS_AMBIENTES);
 	}
-
+	
+	@Override
 	public void serviciosComunesAPagar(Integer monto) {
 
 		super.serviciosComunesAPagar(monto);
@@ -37,7 +38,6 @@ public class DosAmbientes extends Departamento {
 
 	}
 
-	@Override
 	public Integer getValorAPagarExpensas() {
 		
        return pagoDeExpensas(0);

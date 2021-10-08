@@ -24,45 +24,43 @@ public class TestMonoambiente {
 		assertEquals(monto, dto.getPagoExtraordinario());
 
 	}
-	
+
 	@Test
 	public void QuePagueLaExpensaTotal() {
 		Integer piso = 1;
 		Integer numero = 4;
 		Boolean cochera = false;
 		Integer montoExtraordinario = 1000;
-		Integer pagoExpensas = 3000;
-		Integer montoTotalAPagarServicios = 500;
-		Integer valorBasicoDeExpensas = 1000;
-		Integer extraPorMonoambiente = 300;
-		Integer montoServicios = 700;
-		
-		Integer totalAPagar = montoTotalAPagarServicios + valorBasicoDeExpensas + extraPorMonoambiente + montoServicios;
-		
+		Integer montoServiciosComunes = 500;
+
 		Integer valorEsperadoDeLaExpensa = 0;
-		
+
 		Monoambiente DepartamentoMonoambiente = new Monoambiente(piso, numero, cochera, montoExtraordinario);
-		DepartamentoMonoambiente.serviciosComunesAPagar(montoServicios);
-		DepartamentoMonoambiente.pagoDeExpensas(pagoExpensas);
-		
-		Integer valorObtenido = 0;
-		
+		DepartamentoMonoambiente.serviciosComunesAPagar(montoServiciosComunes);
+		Integer servicios = DepartamentoMonoambiente.getMontoTotalAPagarServicios();
+		Integer ExpensasBasicas = DepartamentoMonoambiente.getVALOR_BASICO_EXPENSAS();
+		Integer monoambienteExtra = DepartamentoMonoambiente.getEXTRA_MONOAMBIENTE();
+
+		Integer serviciosTotales = servicios + ExpensasBasicas + monoambienteExtra;
+
+		Integer valorObtenido = DepartamentoMonoambiente.pagoDeExpensas(serviciosTotales);
+
 		assertEquals(valorEsperadoDeLaExpensa, valorObtenido);
 	}
-	
-	@Test
-	public void QuePagueLaExpensaDeFormaParcial() {
-		Integer piso = 1;
-		Integer numero = 4;
-		Boolean cochera = false;
-		Integer monto = 1000;
-		Integer valorEsperadoDeLaExpensa = 1000;
-		Integer pagoExpensas = 3000;
-		
-		Monoambiente DepartamentoMonoambiente = new Monoambiente(piso, numero, cochera, monto);
-		
-		
-		
-	}
+
+//	@Test
+//	public void QuePagueLaExpensaDeFormaParcial() {
+//		Integer piso = 1;
+//		Integer numero = 4;
+//		Boolean cochera = false;
+//		Integer monto = 1000;
+//		Integer valorEsperadoDeLaExpensa = 1000;
+//		Integer pagoExpensas = 3000;
+//		
+//		Monoambiente DepartamentoMonoambiente = new Monoambiente(piso, numero, cochera, monto);
+//		
+//		
+//		
+//	}
 
 }

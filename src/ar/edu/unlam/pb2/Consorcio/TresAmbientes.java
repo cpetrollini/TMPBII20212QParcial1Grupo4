@@ -25,7 +25,6 @@ public class TresAmbientes extends Departamento {
 		this.montoTotalAPagarServicios = super.getServicioComunes() + this.pagoExtraordinario;
 	}
 
-	@Override
 	public Integer pagoDeExpensas(Integer pagoExpensas) {
 		
 	
@@ -39,7 +38,6 @@ public class TresAmbientes extends Departamento {
 
 	}
 
-	@Override
 	public Integer getValorAPagarExpensas() {
 		
        return pagoDeExpensas(0);
