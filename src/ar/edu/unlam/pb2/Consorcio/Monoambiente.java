@@ -31,7 +31,7 @@ public class Monoambiente extends Departamento {
 		if (super.getCochera()) {
 			this.valorAPagarExpensas += Departamento.getEXTRA_COCHERA();
 		}
-		this.valorAPagarExpensas= this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()+ Departamento.getEXTRA_MONOAMBIENTE();
+		this.valorAPagarExpensas+= this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()+ Departamento.getEXTRA_MONOAMBIENTE();
 		this.valorAPagarExpensas-= pagoExpensas;
 
 		return this.valorAPagarExpensas;
@@ -44,6 +44,10 @@ public class Monoambiente extends Departamento {
 
 	}
 	
+	public String recibo() {
+		return  "Dpt: " + super.getNumero() + "piso" + super.getPiso() + "/n" + "Expensas: " + "/n" + "Servicios Basicos; Luz, Agua; " +  super.getServicioComunes() + "/n" + "Valor Basico de Expensas: "
+	+ super.getVALOR_BASICO_EXPENSAS() + "/n" + "Dpt Monoambiente: " + super.getEXTRA_MONOAMBIENTE() + "/n" + "TOTAL: " + getValorAPagarExpensas(); 
+	}
 	
 	public Integer getValorCocheraAPagar() {
 		Integer cochera = 0;

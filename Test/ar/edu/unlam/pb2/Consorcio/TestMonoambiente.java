@@ -48,19 +48,34 @@ public class TestMonoambiente {
 		assertEquals(valorEsperadoDeLaExpensa, valorObtenido);
 	}
 
-//	@Test
-//	public void QuePagueLaExpensaDeFormaParcial() {
-//		Integer piso = 1;
-//		Integer numero = 4;
-//		Boolean cochera = false;
-//		Integer monto = 1000;
-//		Integer valorEsperadoDeLaExpensa = 1000;
-//		Integer pagoExpensas = 3000;
-//		
-//		Monoambiente DepartamentoMonoambiente = new Monoambiente(piso, numero, cochera, monto);
-//		
-//		
-//		
-//	}
+	@Test
+	public void QuePagueLaExpensaDeFormaParcialYconCochera() {
+	
+		Integer piso = 1;
+		Integer numero = 4;
+		Boolean cochera = true;
+		Integer montoExtraordinario = 1000;
+		Integer montoServiciosComunes = 500;
+		Integer expensasPago=2000;
+
+
+		Monoambiente DepartamentoMonoambiente = new Monoambiente(piso, numero, cochera, montoExtraordinario);
+		DepartamentoMonoambiente.serviciosComunesAPagar(montoServiciosComunes);
+		Integer servicios = DepartamentoMonoambiente.getMontoTotalAPagarServicios();
+		Integer ExpensasBasicas = DepartamentoMonoambiente.getVALOR_BASICO_EXPENSAS();
+		Integer monoambienteExtra = DepartamentoMonoambiente.getEXTRA_MONOAMBIENTE();
+		Integer conCochera= DepartamentoMonoambiente.getEXTRA_COCHERA();
+
+		Integer serviciosTotales = servicios + ExpensasBasicas + monoambienteExtra + conCochera;
+		
+		Integer valorEsperadoDeLaExpensa = serviciosTotales - expensasPago;
+
+
+		Integer valorObtenido = DepartamentoMonoambiente.pagoDeExpensas(expensasPago);
+
+		assertEquals(valorEsperadoDeLaExpensa, valorObtenido);
+		
+		
+	}
 
 }

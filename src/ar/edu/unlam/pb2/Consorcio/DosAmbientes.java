@@ -31,7 +31,7 @@ public class DosAmbientes extends Departamento {
 		if (super.getCochera()) {
 			this.valorAPagarExpensas += Departamento.getEXTRA_COCHERA();
 		}
-		this.valorAPagarExpensas= this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()+ Departamento.getEXTRA_DOSAMBIENTES();
+		this.valorAPagarExpensas+= this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()+ Departamento.getEXTRA_DOSAMBIENTES();
 		this.valorAPagarExpensas-= pagoExpensas;
 
 		return this.valorAPagarExpensas;
