@@ -5,16 +5,15 @@ public class DosAmbientes extends Departamento {
 	private Integer pagoExtraordinario;// extras por mantenimiento
 	private Integer montoTotalAPagarServicios;// luz y agua
 	private Integer valorAPagarExpensas;
-	
 
-	public DosAmbientes(Integer piso, Integer numero, Boolean cochera) {
+	public DosAmbientes(Integer piso, Integer numero, Boolean cochera, Integer pagoExtraordinario) {
 		super(piso, numero, cochera);
 
 		this.montoTotalAPagarServicios = 0;
 		this.pagoExtraordinario = pagoExtraordinario;
 		this.valorAPagarExpensas = 0;
 
-		super.setTipoDepartamento(TipoDeDepartamento.DOSAMBIENTES);
+		super.setTipoDepartamento(TipoDeDepartamento.DOS_AMBIENTES);
 	}
 
 	@Override

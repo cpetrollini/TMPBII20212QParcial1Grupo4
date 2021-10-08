@@ -6,14 +6,14 @@ public class TresAmbientes extends Departamento {
 	private Integer montoTotalAPagarServicios;// luz y agua
 	private Integer valorAPagarExpensas;
 
-	public TresAmbientes(Integer piso, Integer numero, Boolean cochera) {
+	public TresAmbientes(Integer piso, Integer numero, Boolean cochera, Integer pagoExtraordinario) {
 		super(piso, numero, cochera);
 
 		this.montoTotalAPagarServicios = 0;
 		this.pagoExtraordinario = pagoExtraordinario;
 		this.valorAPagarExpensas = 0;
 
-		super.setTipoDepartamento(TipoDeDepartamento.TRESAMBIENTES);
+		super.setTipoDepartamento(TipoDeDepartamento.TRES_AMBIENTES);
 
 	}
 
