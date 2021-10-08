@@ -2,14 +2,14 @@ package ar.edu.unlam.pb2.Consorcio;
 
 public class Inquilino extends Habitante {
 
-	private final Integer duracionDelContrato;
+	//
 	private int contadorDelMes = 0;
-	private static Integer deposito;
+	private static final Integer CANTIDAD_DE_VENCIMIENTOS = 3;
 	
 	public Inquilino(Integer dni, String nombre, String apellido, Departamento deptoQueHabita, int duracionDelContratoEnMeses) {
 		super(dni, nombre, apellido, deptoQueHabita);
 		// TODO Auto-generated constructor stub
-		this.duracionDelContrato = duracionDelContratoEnMeses;
+		
 	}
 
 	

@@ -28,9 +28,6 @@ public class Factura {
 	}
 
 
-
-
-
 	public Double getPrecio() {
 		return valor;
 	}

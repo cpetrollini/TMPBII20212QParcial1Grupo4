@@ -16,12 +16,13 @@ public abstract class Habitante {
 	}
 
 	public abstract void pagarFactura();
-	//cambia el estado de una factura a pagada, si es un inquilino o un inquilino se
+	//cambia el estado de una factura a pagada
 	
 	public abstract Factura[] getFacturasAPagar();
 	//obtiene las facturas a pagar. en la clase inquilino se va a sobreescribir el metodo filtrando solo las 
 	//facturas que corresponden a los meses de su contrato, por lo tanto, un inquilino solo puede pagar las
 	//facturas que le corresponden
+	
 	public Departamento getDepartamento() {
 		return departamento;
 	}
@@ -29,7 +30,38 @@ public abstract class Habitante {
 	public void setDepartamento(Departamento departamento) {
 		this.departamento = departamento;
 	}
+
+	public Object getDni() {
+		
+		return dni;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((dni == null) ? 0 : dni.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Habitante other = (Habitante) obj;
+		if (dni == null) {
+			if (other.dni != null)
+				return false;
+		} else if (!dni.equals(other.dni))
+			return false;
+		return true;
+	}
 	
+	x
 	
 
 }

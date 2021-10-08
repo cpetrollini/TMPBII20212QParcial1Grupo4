@@ -133,6 +133,37 @@ public class Departamento {
 		EXTRA_TRESAMBIENTES = eXTRA_TRESAMBIENTES;
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		result = prime * result + ((piso == null) ? 0 : piso.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Departamento other = (Departamento) obj;
+		if (numero == null) {
+			if (other.numero != null)
+				return false;
+		} else if (!numero.equals(other.numero))
+			return false;
+		if (piso == null) {
+			if (other.piso != null)
+				return false;
+		} else if (!piso.equals(other.piso))
+			return false;
+		return true;
+	}
+
 	
 	
 //
