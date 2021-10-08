@@ -3,8 +3,11 @@ package ar.edu.unlam.pb2.Consorcio;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.Test;
+
 public class TestTresAmbientes {
 
+	@Test
 	public void QueSePuedaCrearUnTresAmbientes() {
 
 		Integer piso = 1;
@@ -21,5 +24,4 @@ public class TestTresAmbientes {
 		assertEquals(monto, dto.getPagoExtraordinario());
 
 	}
-
 }

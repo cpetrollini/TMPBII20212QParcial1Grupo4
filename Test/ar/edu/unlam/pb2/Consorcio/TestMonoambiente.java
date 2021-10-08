@@ -3,8 +3,11 @@ package ar.edu.unlam.pb2.Consorcio;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
+import org.junit.Test;
+
 public class TestMonoambiente {
 
+	@Test
 	public void QueSePuedaCrearUnMonoambiente() {
 
 		Integer piso = 1;
