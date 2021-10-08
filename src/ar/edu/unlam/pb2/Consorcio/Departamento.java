@@ -1,9 +1,10 @@
 package ar.edu.unlam.pb2.Consorcio;
 
-public abstract class Departamento {
+public class Departamento {
 
 	private Integer piso;
 	private Integer numero;
+	private Integer cantidadDeAmbientes;
 	private Boolean cochera;
 	private static Integer VALOR_BASICO_EXPENSAS = 2000;
 	private static Integer EXTRA_COCHERA = 2000;
@@ -14,16 +15,32 @@ public abstract class Departamento {
 	
 	private TipoDeDepartamento tipoDepartamento; //cambie el nombre de la variable para que sea mas claro de que se trata
 
-	public Departamento(Integer piso, Integer numero, Boolean cochera) {
+	public Departamento(Integer piso, Integer numero, Boolean cochera, int cantidadDeAmbientes) {
 		this.piso = piso;
 		this.numero = numero;
 		this.cochera = cochera;
+		this.tipoDepartamento = this.definirTipo(cantidadDeAmbientes);
 		this.servicioComunes = 0;
 
 	}
 
-	public abstract Integer PagoDeExpensas();
+	// public abstract Integer PagoDeExpensas();
 
+	private TipoDeDepartamento definirTipo(int cantidadDeAmbientes) {
+		TipoDeDepartamento tipo= null;
+		switch(cantidadDeAmbientes) {
+		case 1:
+			tipo = TipoDeDepartamento.MONOAMBIENTE;
+			break;
+		case 2:
+			tipo = TipoDeDepartamento.DOSAMBIENTES;
+			break;
+		case 3:
+			tipo = TipoDeDepartamento.TRESAMBIENTES;
+			break;
+		}
+		return tipo;	
+	}
 	public void serviciosComunesAPagar(Integer monto) {
 		this.servicioComunes = monto;
 	}
