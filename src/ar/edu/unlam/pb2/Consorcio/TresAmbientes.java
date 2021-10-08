@@ -5,8 +5,6 @@ public class TresAmbientes extends Departamento {
 	private Integer pagoExtraordinario;// extras por mantenimiento
 	private Integer montoTotalAPagarServicios;// luz y agua
 	private Integer valorAPagarExpensas;
-	private final Integer EXTRA_COCHERA = 2000;
-	private final Integer EXTRA_TIPO_DE_DEPARTAMENTO_TRESAMBIENTES = 3000;
 
 	public TresAmbientes(Integer piso, Integer numero, Boolean cochera) {
 		super(piso, numero, cochera);
@@ -15,7 +13,7 @@ public class TresAmbientes extends Departamento {
 		this.pagoExtraordinario = pagoExtraordinario;
 		this.valorAPagarExpensas = 0;
 
-		setDepartamento(getDepartamento().TRESAMBIENTES);
+		super.setTipoDepartamento(TipoDeDepartamento.TRESAMBIENTES);
 
 	}
 
@@ -31,10 +29,10 @@ public class TresAmbientes extends Departamento {
 	public Integer PagoDeExpensas() {
 
 		if (super.getCochera()) {
-			this.valorAPagarExpensas += EXTRA_COCHERA;
+			this.valorAPagarExpensas += Departamento.getEXTRA_COCHERA();
 		}
 
-		this.valorAPagarExpensas += super.getVALOR_BASICO_EXPENSAS() + this.EXTRA_TIPO_DE_DEPARTAMENTO_TRESAMBIENTES
+		this.valorAPagarExpensas += super.getVALOR_BASICO_EXPENSAS() + Departamento.getEXTRA_TRESAMBIENTES()
 				+ this.montoTotalAPagarServicios;
 
 		return this.valorAPagarExpensas;
