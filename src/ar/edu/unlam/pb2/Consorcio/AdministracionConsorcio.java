@@ -14,15 +14,13 @@ public class AdministracionConsorcio {
 	}
 
 	public boolean agregarDepartamento(Departamento nuevo) {
-		boolean agregado = false;
 		for (int i = 0; i < departamentos.length; i++) {
 			if(this.departamentos[i]!=null) {
 				this.departamentos[i] = nuevo;
-				agregado = true;
-				break;
+				return true;
 			}
 		}
-	return agregado;
+	return false;
 	}
 	
 	

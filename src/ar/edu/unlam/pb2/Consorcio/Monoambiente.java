@@ -4,6 +4,7 @@ public class Monoambiente extends Departamento {
 
 	private Integer pagoExtraordinario;// extras por mantenimiento
 	private Integer montoTotalAPagarServicios;// luz y agua
+	private Integer PagoDeExpensas;
 	private Integer valorAPagarExpensas;
 
 	public Monoambiente(Integer piso, Integer numero, Boolean cochera, Integer pagoExtraordinario) {
@@ -12,6 +13,7 @@ public class Monoambiente extends Departamento {
 		this.montoTotalAPagarServicios = 0;
 		this.pagoExtraordinario = pagoExtraordinario;
 		this.valorAPagarExpensas = 0;
+
 		super.setTipoDepartamento(TipoDeDepartamento.MONOAMBIENTE);
 	}
 
@@ -23,17 +25,35 @@ public class Monoambiente extends Departamento {
 		this.montoTotalAPagarServicios = super.getServicioComunes() + this.pagoExtraordinario;
 	}
 
-	@Override
-	public Integer PagoDeExpensas() {
-
+	public Integer pagoDeExpensas(Integer pagoExpensas) {
+		
+	
 		if (super.getCochera()) {
 			this.valorAPagarExpensas += Departamento.getEXTRA_COCHERA();
 		}
-
-		this.valorAPagarExpensas += super.getVALOR_BASICO_EXPENSAS() + Departamento.getEXTRA_MONOAMBIENTE()
-				+ this.montoTotalAPagarServicios;
+		this.valorAPagarExpensas= this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()+ Departamento.getEXTRA_MONOAMBIENTE();
+		this.valorAPagarExpensas-= pagoExpensas;
 
 		return this.valorAPagarExpensas;
+
+	}
+
+	public Integer getValorAPagarExpensas() {
+		
+       return pagoDeExpensas(0);
+
+	}
+	
+	
+	public Integer getValorCocheraAPagar() {
+		Integer cochera = 0;
+
+		if (super.getCochera()) {
+			return Departamento.getEXTRA_COCHERA();
+		}
+
+		return cochera;
+
 	}
 
 	public Integer getPagoExtraordinario() {
@@ -52,13 +72,12 @@ public class Monoambiente extends Departamento {
 		this.montoTotalAPagarServicios = montoTotalAPagarServicios;
 	}
 
-	public Integer getValorAPagarExpensas() {
-		return valorAPagarExpensas;
+	public Integer getValorPagoDeExpensas() {
+		return PagoDeExpensas;
 	}
 
-	public void setValorAPagarExpensas(Integer valorAPagarExpensas) {
-		this.valorAPagarExpensas = valorAPagarExpensas;
+	public void setValorPagoDeExpensas(Integer valorPagoDeExpensas) {
+		this.PagoDeExpensas = valorPagoDeExpensas;
 	}
-
-//
 }
+

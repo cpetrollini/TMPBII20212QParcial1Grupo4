@@ -10,18 +10,19 @@ public class Habitante {
 
 	private TipoDeDepartamento departamento;
 
-	private Boolean EstadoDeExpensas;
+	private Boolean estadoDeExpensas;
 	// private TipoDeHabitante tipo;
 
 	public Habitante(Integer dni, String nombre, String apellido, TipoDeDepartamento departamento,
 			Boolean estadoDeExpensas) {
-		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.departamento = departamento;
-		EstadoDeExpensas = estadoDeExpensas;
+		this.estadoDeExpensas = estadoDeExpensas;
 	}
+	
+	// DONDE PONER EL RECIBO
 
 	public Integer getDni() {
 		return dni;
@@ -56,11 +57,11 @@ public class Habitante {
 	}
 
 	public Boolean getEstadoDeExpensas() {
-		return EstadoDeExpensas;
+		return estadoDeExpensas;
 	}
 
 	public void setEstadoDeExpensas(Boolean estadoDeExpensas) {
-		EstadoDeExpensas = estadoDeExpensas;
+		this.estadoDeExpensas = estadoDeExpensas;
 	}
 
 }

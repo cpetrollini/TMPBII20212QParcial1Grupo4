@@ -22,12 +22,13 @@ public abstract class Departamento {
 
 	}
 
-	public abstract Integer PagoDeExpensas();
+	public abstract Integer pagoDeExpensas(Integer pagoExpensas);
+	public abstract Integer getValorAPagarExpensas();
 
 	public void serviciosComunesAPagar(Integer monto) {
 		this.servicioComunes = monto;
 	}
-
+	
 	public Integer getPiso() {
 		return piso;
 	}
@@ -44,7 +45,7 @@ public abstract class Departamento {
 		this.numero = numero;
 	}
 
-	public Boolean getCochera() {
+	protected Boolean getCochera() {
 		return cochera;
 	}
 
@@ -107,8 +108,7 @@ public abstract class Departamento {
 	public static void setEXTRA_TRESAMBIENTES(Integer eXTRA_TRESAMBIENTES) {
 		EXTRA_TRESAMBIENTES = eXTRA_TRESAMBIENTES;
 	}
+	
 
-	
-	
 //
 }

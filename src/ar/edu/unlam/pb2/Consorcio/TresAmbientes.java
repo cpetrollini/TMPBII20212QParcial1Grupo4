@@ -4,6 +4,7 @@ public class TresAmbientes extends Departamento {
 
 	private Integer pagoExtraordinario;// extras por mantenimiento
 	private Integer montoTotalAPagarServicios;// luz y agua
+	private Integer PagoDeExpensas;
 	private Integer valorAPagarExpensas;
 
 	public TresAmbientes(Integer piso, Integer numero, Boolean cochera, Integer pagoExtraordinario) {
@@ -14,7 +15,6 @@ public class TresAmbientes extends Departamento {
 		this.valorAPagarExpensas = 0;
 
 		super.setTipoDepartamento(TipoDeDepartamento.TRES_AMBIENTES);
-
 	}
 
 	@Override
@@ -26,16 +26,36 @@ public class TresAmbientes extends Departamento {
 	}
 
 	@Override
-	public Integer PagoDeExpensas() {
-
+	public Integer pagoDeExpensas(Integer pagoExpensas) {
+		
+	
 		if (super.getCochera()) {
 			this.valorAPagarExpensas += Departamento.getEXTRA_COCHERA();
 		}
-
-		this.valorAPagarExpensas += super.getVALOR_BASICO_EXPENSAS() + Departamento.getEXTRA_TRESAMBIENTES()
-				+ this.montoTotalAPagarServicios;
+		this.valorAPagarExpensas= this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()+ Departamento.getEXTRA_TRESAMBIENTES();
+		this.valorAPagarExpensas-= pagoExpensas;
 
 		return this.valorAPagarExpensas;
+
+	}
+
+	@Override
+	public Integer getValorAPagarExpensas() {
+		
+       return pagoDeExpensas(0);
+
+	}
+	
+	
+	public Integer getValorCocheraAPagar() {
+		Integer cochera = 0;
+
+		if (super.getCochera()) {
+			return Departamento.getEXTRA_COCHERA();
+		}
+
+		return cochera;
+
 	}
 
 	public Integer getPagoExtraordinario() {
@@ -54,12 +74,12 @@ public class TresAmbientes extends Departamento {
 		this.montoTotalAPagarServicios = montoTotalAPagarServicios;
 	}
 
-	public Integer getValorAPagarExpensas() {
-		return valorAPagarExpensas;
+	public Integer getValorPagoDeExpensas() {
+		return PagoDeExpensas;
 	}
 
-	public void setValorAPagarExpensas(Integer valorAPagarExpensas) {
-		this.valorAPagarExpensas = valorAPagarExpensas;
+	public void setValorPagoDeExpensas(Integer valorPagoDeExpensas) {
+		this.PagoDeExpensas = valorPagoDeExpensas;
 	}
+}	
 
-}

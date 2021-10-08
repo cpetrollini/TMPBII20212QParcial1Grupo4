@@ -14,7 +14,6 @@ public class Recibo {
 	// -----------> Departamento no se puede instanciar es ABSTRACTA
 
 	public Recibo(Double valor, Integer mes, Departamento departamento, Habitante habitante) {
-		super();
 		this.valor = valor;
 		this.mes = mes;
 		this.habitante = habitante;
