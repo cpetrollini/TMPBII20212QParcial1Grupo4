@@ -12,7 +12,7 @@ public class Departamento {
 	private static Integer EXTRA_TRESAMBIENTES = 30;
 	private Double valorAPagarExpensas;
 	private Integer porcentajeExtraPorDepartamento;
-	private Boolean alDia;
+	private Boolean alDia; //desarrollar
 	private TipoDeDepartamento tipoDepartamento; //cambie el nombre de la variable para que sea mas claro de que se trata
 	private Propietario propietario;
 	private Double valorActual;
@@ -48,7 +48,7 @@ public class Departamento {
 	}
 	
 	
-	
+	//sueldo basico + antiguedad + extra 
 	public Double valorActualDeLaExpensa() {
 		this.valorActual = (double) (Departamento.VALOR_BASICO_EXPENSAS + Departamento.VALOR_BASICO_EXPENSAS * this.porcentajeExtraPorDepartamento / 100.0);
 		if(this.cochera) {
@@ -58,12 +58,14 @@ public class Departamento {
 	}
 	
 	
-	
+	//METODO A DESARROLLAR: esta al dia o no: recorrer el array de facturas y chequear que esten pagadas
+	//CalcularValorAPagarExpensas valorAPagar += Factura[i].getValor
 	public Integer getPiso() {
 		return piso;
 	}
 
 
+	
 	public void setPiso(Integer piso) {
 		this.piso = piso;
 	}
@@ -131,6 +133,15 @@ public class Departamento {
 
 	public static void setEXTRA_TRESAMBIENTES(Integer eXTRA_TRESAMBIENTES) {
 		EXTRA_TRESAMBIENTES = eXTRA_TRESAMBIENTES;
+	}
+
+	
+	public Factura[] getHistorialDeExpensas() {
+		return historialDeExpensas;
+	}
+
+	public void setHistorialDeExpensas(Factura[] historialDeExpensas) {
+		this.historialDeExpensas = historialDeExpensas;
 	}
 
 	@Override

@@ -13,13 +13,13 @@ public class Inquilino extends Habitante {
 	}
 
 	
-	public static Integer getDeposito() {
-		return deposito;
-	}
-
-	public static void setDeposito(Integer deposito) {
-		Inquilino.deposito = deposito;
-	}
+//	public static Integer getDeposito() {
+//		return deposito;
+//	}
+//
+//	public static void setDeposito(Integer deposito) {
+//		Inquilino.deposito = deposito;
+//	}
 
 
 	@Override
@@ -30,8 +30,19 @@ public class Inquilino extends Habitante {
 
 	@Override
 	public Factura[] getFacturasAPagar() {
-		// TODO Auto-generated method stub
-		return null;
+		Factura[] arrayDeFacturas = new Factura[12];
+		for (int i = 0; i < super.getDepartamento().getHistorialDeExpensas().length; i++) {
+			if(super.getDepartamento().getHistorialDeExpensas()[i] != null) {
+				if(super.getDepartamento().getHistorialDeExpensas()[i].getHabitante().getDni().equals(this.getDni())) {
+					for (int j = 0; j < arrayDeFacturas.length; j++) {
+						if(arrayDeFacturas[j] == null) {
+						 arrayDeFacturas[j] = super.getDepartamento().getHistorialDeExpensas()[i];	
+						}
+					}
+				}
+			}
+		}
+		return arrayDeFacturas;
 	}
 	
 	
