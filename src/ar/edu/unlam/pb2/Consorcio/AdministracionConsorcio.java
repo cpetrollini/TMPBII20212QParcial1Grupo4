@@ -5,7 +5,7 @@ public class AdministracionConsorcio {
 	private Habitante[] habitantes;
 	private Departamento[] departamentos;
 	private Habitante[] habitantesConExpensasAlDia;
-	private Recibo[] resumenDeExpensas;
+	private Factura[] archivo;
 	
 	public AdministracionConsorcio() {
 		this.departamentos = new Departamento [4];
@@ -24,6 +24,20 @@ public class AdministracionConsorcio {
 		}
 	return agregado;
 	}
+	
+	// crear recibo de pago a un depto
+	
+	public boolean agregarReciboAlArchivo(Factura reciboNuevo) {
+		boolean agregado =  false;
+		for (int i = 0; i < archivo.length; i++) {
+			if(this.archivo[i] == null) {
+				this.archivo[i] = reciboNuevo;
+				agregado = true;
+			}
+		}
+		return agregado;
+	}
+	
 	
 	
 	

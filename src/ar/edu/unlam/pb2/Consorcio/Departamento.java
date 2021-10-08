@@ -4,24 +4,26 @@ public class Departamento {
 
 	private Integer piso;
 	private Integer numero;
-	private Integer cantidadDeAmbientes;
 	private Boolean cochera;
 	private static Integer VALOR_BASICO_EXPENSAS = 2000;
 	private static Integer EXTRA_COCHERA = 2000;
 	private static Integer EXTRA_MONOAMBIENTE = 10;
 	private static Integer EXTRA_DOSAMBIENTES = 20;
 	private static Integer EXTRA_TRESAMBIENTES = 30;
-	private Integer servicioComunes;// luz y agua
-	
+	private Double valorAPagarExpensas;
+	private Integer porcentajeExtraPorDepartamento;
+	private Boolean alDia;
 	private TipoDeDepartamento tipoDepartamento; //cambie el nombre de la variable para que sea mas claro de que se trata
-
-	public Departamento(Integer piso, Integer numero, Boolean cochera, int cantidadDeAmbientes) {
+	private Propietario propietario;
+	private Double valorActual;
+	private Factura[] historialDeExpensas = new Factura [12];
+	//este array guarda los ultimos 12 recibos para regstrar si estan pagos o no y cuando queda por pagar
+	
+	public Departamento(Integer piso, Integer numero, Boolean cochera, int cantidadDeAmbientes, Propietario propietario) {
 		this.piso = piso;
 		this.numero = numero;
 		this.cochera = cochera;
 		this.tipoDepartamento = this.definirTipo(cantidadDeAmbientes);
-		this.servicioComunes = 0;
-
 	}
 
 	// public abstract Integer PagoDeExpensas();
@@ -31,23 +33,36 @@ public class Departamento {
 		switch(cantidadDeAmbientes) {
 		case 1:
 			tipo = TipoDeDepartamento.MONOAMBIENTE;
+			this.porcentajeExtraPorDepartamento = Departamento.EXTRA_MONOAMBIENTE;
 			break;
 		case 2:
 			tipo = TipoDeDepartamento.DOSAMBIENTES;
+			this.porcentajeExtraPorDepartamento = Departamento.EXTRA_DOSAMBIENTES;
 			break;
 		case 3:
 			tipo = TipoDeDepartamento.TRESAMBIENTES;
+			this.porcentajeExtraPorDepartamento = Departamento.EXTRA_TRESAMBIENTES;
 			break;
 		}
 		return tipo;	
 	}
-	public void serviciosComunesAPagar(Integer monto) {
-		this.servicioComunes = monto;
+	
+	
+	
+	public Double valorActualDeLaExpensa() {
+		this.valorActual = (double) (Departamento.VALOR_BASICO_EXPENSAS + Departamento.VALOR_BASICO_EXPENSAS * this.porcentajeExtraPorDepartamento / 100.0);
+		if(this.cochera) {
+			this.valorActual += Departamento.EXTRA_COCHERA;
+		}
+		return this.valorActual;
 	}
-
+	
+	
+	
 	public Integer getPiso() {
 		return piso;
 	}
+
 
 	public void setPiso(Integer piso) {
 		this.piso = piso;
@@ -77,13 +92,6 @@ public class Departamento {
 		VALOR_BASICO_EXPENSAS = vALOR_BASICO_EXPENSAS;
 	}
 
-	public Integer getServicioComunes() {
-		return servicioComunes;
-	}
-
-	public void setServicioComunes(Integer servicioComunes) {
-		this.servicioComunes = servicioComunes;
-	}
 
 	public TipoDeDepartamento getTipoDepartamento() {
 		return tipoDepartamento;
