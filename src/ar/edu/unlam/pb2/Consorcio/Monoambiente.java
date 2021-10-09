@@ -6,6 +6,15 @@ public class Monoambiente extends Departamento {
 	private Integer montoTotalAPagarServicios;// luz y agua
 	private Integer PagoDeExpensas;
 	private Integer valorAPagarExpensas;
+	private Habitante habitante;
+//GET HABITANTE PRUEBA 
+	public Habitante getHabitante() {
+		return habitante;
+	}
+//SET HABITANTE PRUEBA  
+	public void setHabitante(Habitante habitante) {
+		this.habitante = habitante;
+	}
 
 	public Monoambiente(Integer piso, Integer numero, Boolean cochera, Integer pagoExtraordinario) {
 		super(piso, numero, cochera);
@@ -24,29 +33,31 @@ public class Monoambiente extends Departamento {
 
 		this.montoTotalAPagarServicios = super.getServicioComunes() + this.pagoExtraordinario;
 	}
-
+	
 	public Integer pagoDeExpensas(Integer pagoExpensas) {
 		
-	
 		if (super.getCochera()) {
 			this.valorAPagarExpensas += Departamento.getEXTRA_COCHERA();
 		}
 		this.valorAPagarExpensas+= this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()+ Departamento.getEXTRA_MONOAMBIENTE();
+//		if(this.valorAPagarExpensas.equals(pagoExpensas)) {
+//			this.habitante.setEstadoDeExpensas(true);
+//		}
 		this.valorAPagarExpensas-= pagoExpensas;
+		
 
 		return this.valorAPagarExpensas;
 
 	}
-
 	public Integer getValorAPagarExpensas() {
 		
        return pagoDeExpensas(0);
 
 	}
-	
-	public String recibo() {
-		return  "Dpt: " + super.getNumero() + "piso" + super.getPiso() + "/n" + "Expensas: " + "/n" + "Servicios Basicos; Luz, Agua; " +  super.getServicioComunes() + "/n" + "Valor Basico de Expensas: "
-	+ super.getVALOR_BASICO_EXPENSAS() + "/n" + "Dpt Monoambiente: " + super.getEXTRA_MONOAMBIENTE() + "/n" + "TOTAL: " + getValorAPagarExpensas(); 
+//  RESUMEN DE EXPENSAS DE UN DPT ESPECIFICO
+	public String toString() {
+		return  "Dpt: " + super.getNumero() + " piso " + super.getPiso() + "\n" + "Expensas; " + "\n" + "Servicios Basicos (Luz, Agua): " +  getMontoTotalAPagarServicios()  + "\n" + "Cochera: " + getValorCocheraAPagar()  + "\n"+ "Valor Basico de Expensas: "
+	+ super.getVALOR_BASICO_EXPENSAS() + "\n" + "Dpt Monoambiente: " + super.getEXTRA_MONOAMBIENTE() + " \n" + "TOTAL: " + getValorAPagarExpensas(); 
 	}
 	
 	public Integer getValorCocheraAPagar() {

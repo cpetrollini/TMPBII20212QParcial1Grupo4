@@ -2,14 +2,16 @@ package ar.edu.unlam.pb2.Consorcio;
 
 public abstract class Departamento {
 
+	
+
 	private Integer piso;
 	private Integer numero;
 	private Boolean cochera;
 	private static Integer VALOR_BASICO_EXPENSAS = 2000;
 	private static Integer EXTRA_COCHERA = 2000;
-	private static Integer EXTRA_MONOAMBIENTE = 10;
-	private static Integer EXTRA_DOSAMBIENTES = 20;
-	private static Integer EXTRA_TRESAMBIENTES = 30;
+	private static Integer EXTRA_MONOAMBIENTE = 1000;
+	private static Integer EXTRA_DOSAMBIENTES = 2000;
+	private static Integer EXTRA_TRESAMBIENTES = 3000;
 	private Integer servicioComunes;// luz y agua
 	
 	private TipoDeDepartamento tipoDepartamento; //cambie el nombre de la variable para que sea mas claro de que se trata
@@ -25,6 +27,37 @@ public abstract class Departamento {
 	public abstract Integer pagoDeExpensas(Integer pagoExpensas);
 	public abstract Integer getValorAPagarExpensas();
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((numero == null) ? 0 : numero.hashCode());
+		result = prime * result + ((piso == null) ? 0 : piso.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Departamento other = (Departamento) obj;
+		if (numero == null) {
+			if (other.numero != null)
+				return false;
+		} else if (!numero.equals(other.numero))
+			return false;
+		if (piso == null) {
+			if (other.piso != null)
+				return false;
+		} else if (!piso.equals(other.piso))
+			return false;
+		return true;
+	}
+	
 	public void serviciosComunesAPagar(Integer monto) {
 		this.servicioComunes = monto;
 	}

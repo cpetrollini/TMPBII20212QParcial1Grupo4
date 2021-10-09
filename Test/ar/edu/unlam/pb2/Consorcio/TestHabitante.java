@@ -13,16 +13,15 @@ public class TestHabitante {
 		Integer dni = 21235789;
 		String nombre = "Jose";
 		String apellido = "Albornoz";
-		TipoDeDepartamento tipo = TipoDeDepartamento.MONOAMBIENTE;
 		Boolean estadoDeExpensas = true;
 
-		Habitante joseAlbornoz = new Habitante(dni, nombre, apellido, tipo, estadoDeExpensas);
+		Habitante joseAlbornoz = new Habitante(dni, nombre, apellido, estadoDeExpensas);
 
 		assertNotNull(joseAlbornoz);
 		assertEquals(dni, joseAlbornoz.getDni());
 		assertEquals(nombre, joseAlbornoz.getNombre());
 		assertEquals(apellido, joseAlbornoz.getApellido());
-		assertEquals(tipo, joseAlbornoz.getDepartamento());
+//		assertEquals(tipo, joseAlbornoz.getDepartamento());
 		assertEquals(estadoDeExpensas, joseAlbornoz.getEstadoDeExpensas());
 	}
 }
