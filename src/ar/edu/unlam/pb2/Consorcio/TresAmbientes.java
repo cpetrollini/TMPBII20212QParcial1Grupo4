@@ -4,16 +4,17 @@ public class TresAmbientes extends Departamento {
 
 	private Integer pagoExtraordinario;// extras por mantenimiento
 	private Integer montoTotalAPagarServicios;// luz y agua
-	private Integer PagoDeExpensas;
 	private Integer valorAPagarExpensas;
+	Habitante habitante;
 
-	public TresAmbientes(Integer piso, Integer numero, Boolean cochera, Integer pagoExtraordinario) {
+	public TresAmbientes(Integer piso, Integer numero, Boolean cochera, Integer pagoExtraordinario,
+			Habitante habitante) {
 		super(piso, numero, cochera);
 
 		this.montoTotalAPagarServicios = 0;
 		this.pagoExtraordinario = pagoExtraordinario;
 		this.valorAPagarExpensas = 0;
-
+		this.habitante = habitante;
 		super.setTipoDepartamento(TipoDeDepartamento.TRES_AMBIENTES);
 	}
 
@@ -25,35 +26,25 @@ public class TresAmbientes extends Departamento {
 		this.montoTotalAPagarServicios = super.getServicioComunes() + this.pagoExtraordinario;
 	}
 
-	public Integer pagoDeExpensas(Integer pagoExpensas) {
-		
-	
+	@Override
+	public Integer pagoDeExpensas() {
+
 		if (super.getCochera()) {
-			this.valorAPagarExpensas += Departamento.getEXTRA_COCHERA();
+			this.valorAPagarExpensas += super.getEXTRA_COCHERA();
 		}
-		this.valorAPagarExpensas+= this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()+ Departamento.getEXTRA_TRESAMBIENTES();
-		this.valorAPagarExpensas-= pagoExpensas;
+		this.valorAPagarExpensas += this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()
+				+ super.getEXTRA_TRESAMBIENTES();
 
 		return this.valorAPagarExpensas;
 
 	}
 
-	public Integer getValorAPagarExpensas() {
-		
-       return pagoDeExpensas(0);
-
-	}
-	
-	
-	public Integer getValorCocheraAPagar() {
-		Integer cochera = 0;
-
-		if (super.getCochera()) {
-			return Departamento.getEXTRA_COCHERA();
-		}
-
-		return cochera;
-
+//  RESUMEN DE EXPENSAS DE UN DEPARTAMENTO ESPECIFICO
+	public String toString() {
+		return "Departamento: " + super.getNumero() + " piso " + super.getPiso() + "\n" + "EXPENSAS  " + "\n"
+				+ "Servicios Basicos (Luz, Agua): " + this.getMontoTotalAPagarServicios() + "\n" + "Cochera: "
+				+ super.getEXTRA_COCHERA() + "\n" + "Valor Basico de Expensas: " + super.getVALOR_BASICO_EXPENSAS()
+				+ "\n" + "Dpt Monoambiente: " + super.getEXTRA_MONOAMBIENTE() + " \n" + "TOTAL: " + pagoDeExpensas();
 	}
 
 	public Integer getPagoExtraordinario() {
@@ -72,12 +63,14 @@ public class TresAmbientes extends Departamento {
 		this.montoTotalAPagarServicios = montoTotalAPagarServicios;
 	}
 
-	public Integer getValorPagoDeExpensas() {
-		return PagoDeExpensas;
+	// GET HABITANTE
+	public Habitante getHabitante() {
+		return habitante;
 	}
 
-	public void setValorPagoDeExpensas(Integer valorPagoDeExpensas) {
-		this.PagoDeExpensas = valorPagoDeExpensas;
+	// SET HABITANTE
+	public void setHabitante(Habitante habitante) {
+		this.habitante = habitante;
 	}
-}	
 
+}

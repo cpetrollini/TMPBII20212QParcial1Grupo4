@@ -2,34 +2,41 @@ package ar.edu.unlam.pb2.Consorcio;
 
 public class Recibo {
 
-	// desde aca armar el precio de la cochera y las expensas del dpto que posee el
-	// habitante
-	private Double valor;
-	private Integer mes; // cual mes del contrato es
-
+	private Integer valorExpensa;
+	private Integer mes;
 	private Departamento departamento;
-
 	private Habitante habitante;
 
-	// -----------> Departamento no se puede instanciar es ABSTRACTA
-
-	public Recibo(Double valor, Integer mes, Departamento departamento, Habitante habitante) {
-		this.valor = valor;
+	public Recibo(Departamento departamento, Habitante habitante) {
+		this.valorExpensa = valorExpensa;
 		this.mes = mes;
 		this.habitante = habitante;
+		setValor(departamento.pagoDeExpensas());
 
 	}
 
-	public Double getPrecio() {
-		return valor;
+	public Integer getValor() {
+		return valorExpensa;
 	}
 
-	public void setPrecio(Double precio) {
-		this.valor = precio;
+	public void setValor(Integer valor) {
+		this.valorExpensa = valor;
 	}
 
 	public Integer getMes() {
 		return mes;
+	}
+
+	public void setMes(Integer mes) {
+		this.mes = mes;
+	}
+
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
 	}
 
 	public Habitante getHabitante() {
