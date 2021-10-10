@@ -32,11 +32,12 @@ public class AdministracionConsorcio {
 
 			if (departamentos[i] != null) {
 				if (departamentos[i].getPiso().equals(piso) && departamentos[i].getNumero().equals(numero)) {
+					if(departamentos[i].toString()!=null) {
 					recibos[i] = departamentos[i];
 					agregado = true;
 
 					break;
-				}
+				}}
 			}
 		}
 

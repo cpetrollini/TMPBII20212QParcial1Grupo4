@@ -60,7 +60,7 @@ public class TresAmbientes extends Departamento {
 			return "Departamento: " + super.getNumero() + " piso: " + super.getPiso() + " habitante: "
 					+ this.habitante.getApellido() + "\n"  + "TOTAL: " + this.pagoExpensa;
 		}
-		return "No hay recibo disponible";
+		return null;
 	}
 
 	public Boolean getEstadoDeExpensa() {
