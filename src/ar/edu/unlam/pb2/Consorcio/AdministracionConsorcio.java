@@ -42,8 +42,7 @@ public class AdministracionConsorcio {
 
 		return agregado;
 	}
-
-	// LISTADO DE EXPENSAS ----> da una excepcion!!!!
+// LISTADO DE RECIBOS
 	public String toString() {
 		String resumenDeExpensasPagadas = "";
 		for (int i = 0; i < recibos.length; i++) {
@@ -69,7 +68,7 @@ public class AdministracionConsorcio {
 //}
 	
 //	NUMERO DE DEUDORES
-	public Integer cuantosDebenExpensas() {
+	public Integer cuantosDptsDebenExpensas() {
 
 		Integer deudores=0;
 		for (int i = 0; i < departamentos.length; i++) {

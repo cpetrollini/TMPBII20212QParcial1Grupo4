@@ -18,6 +18,8 @@ public class PruebaDeReciboCompleto {
 		System.out.println(departamentoMonoambiente.valorExpensasAPagar());
 		
 		departamentoMonoambiente.pagarExpensas(1500);
+		System.out.println(departamentoMonoambiente.valorExpensasAPagar());
+
 
 		// DICE SI EL HABITANTE TIENE PENDIENTE DE PAGO (TRUE) O YA PAGO TOD (FALSE)
 		elHabitante.getEstadoDeExpensas();
@@ -48,6 +50,7 @@ public class PruebaDeReciboCompleto {
 		System.out.println(departamentoMonoambiente2.valorExpensasAPagar());
 		
 		departamentoMonoambiente2.pagarExpensas(1500);
+		System.out.println(departamentoMonoambiente2.valorExpensasAPagar());
 		
 		
 		System.out.println(laPerlaAdministracionConsorcio.ingresarDepartamento(departamentoMonoambiente2));

@@ -8,7 +8,7 @@ public class TresAmbientes extends Departamento {
 	private Habitante habitante;
 	private Boolean estadoDeExpensa = true;
 	private Boolean pagoDelHabitante = false;
-	private Integer expensasTotal;
+	private Integer pagoExpensa;
 
 	public TresAmbientes(Integer piso, Integer numero, Boolean cochera, Integer pagoExtraordinario,
 			Habitante habitante) {
@@ -34,6 +34,8 @@ public class TresAmbientes extends Departamento {
 	}
 
 	public void pagarExpensas(Integer pagoExpensa) {
+		
+		this.pagoExpensa = pagoExpensa;
 
 		if (super.getCochera()) {
 			this.valorAPagarExpensas += super.getEXTRA_COCHERA();
@@ -41,7 +43,6 @@ public class TresAmbientes extends Departamento {
 		this.valorAPagarExpensas += this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()
 				+ super.getEXTRA_TRESAMBIENTES();
 
-		expensasTotal = this.valorAPagarExpensas;
 		
 		if (pagoExpensa != 0) {
 			this.pagoDelHabitante = true;
@@ -53,14 +54,11 @@ public class TresAmbientes extends Departamento {
 
 	}
 
-	// RESUMEN DE EXPENSAS DE UN DEPARTAMENTO ESPECIFICO (RECIBO)
+	// RECIBO
 	public String toString() {
 		if (this.pagoDelHabitante) {
 			return "Departamento: " + super.getNumero() + " piso: " + super.getPiso() + " habitante: "
-					+ this.habitante.getApellido() + "\n" + "EXPENSAS  " + "\n" + "Servicios Basicos (Luz, Agua): "
-					+ this.getMontoTotalAPagarServicios() + "\n" + "Cochera: " + super.getEXTRA_COCHERA() + "\n"
-					+ "Valor Basico de Expensas: " + super.getVALOR_BASICO_EXPENSAS() + "\n" + "Dpt Monoambiente: "
-					+ super.getEXTRA_TRESAMBIENTES() + " \n" + "TOTAL: " + this.expensasTotal;
+					+ this.habitante.getApellido() + "\n"  + "TOTAL: " + this.pagoExpensa;
 		}
 		return "No hay recibo disponible";
 	}
