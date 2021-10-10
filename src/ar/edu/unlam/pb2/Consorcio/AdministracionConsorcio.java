@@ -20,12 +20,12 @@ public class AdministracionConsorcio {
 
 	}
 
-	// INGRESAR UN RECIBO DE PAGO DE EXPENSAS SIN REPETIDOS----> da una
-	// excepcion!!!!
+	
 	// ESTE ES UN PROBLEMA DE LOGICA, PORQUE SOLO RECIBE UN PAGO POR HABITANTE
 	// NO ES NECESARIO EL REPETIDO PORQUE NO ESTAMOS TOMANDO PAGO POR FECHAS
 	// EL REPETIDO EN ESTE CASO (REIBO) PUEDE OCURRIR
-
+	
+	// INGRESAR UN RECIBO DE PAGO DE EXPENSAS 
 	public boolean ingresarRecibo(Integer numero, Integer piso) {
 		boolean agregado = false;
 		for (int i = 0; i < departamentos.length; i++) {
