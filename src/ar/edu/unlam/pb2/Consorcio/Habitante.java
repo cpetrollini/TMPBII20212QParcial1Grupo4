@@ -8,11 +8,10 @@ public class Habitante {
 // FALSE : EXPENSA PAGADA, TRUE: DEBE 
 	private Boolean estadoDeExpensas;
 
-	public Habitante(Integer dni, String nombre, String apellido, Boolean estadoDeExpensas) {
+	public Habitante(Integer dni, String nombre, String apellido) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.estadoDeExpensas = estadoDeExpensas;
 
 	}
 
@@ -45,7 +44,7 @@ public class Habitante {
 	public Boolean getEstadoDeExpensas() {
 		return estadoDeExpensas;
 	}
-
+//NO SE SI ES NECESARIO ESTE METODO, YA HAY UNA PARECIDO EN LA CLASES DE AMBIESTES
 	public void setEstadoDeExpensas(Boolean estadoDeExpensas) {
 		this.estadoDeExpensas = estadoDeExpensas;
 	}

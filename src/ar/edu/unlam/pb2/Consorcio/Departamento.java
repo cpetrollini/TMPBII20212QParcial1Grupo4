@@ -22,7 +22,11 @@ public abstract class Departamento {
 	}
 
 //----------------------------------------------------------------------------
-	public abstract Integer pagoDeExpensas();
+	public abstract Integer valorExpensasAPagar();
+	
+	public abstract Boolean getPagoDelHabitante();
+	
+	public abstract Boolean getEstadoDeExpensa();
 
 	public void serviciosComunesAPagar(Integer monto) {
 		this.servicioComunes = monto;
