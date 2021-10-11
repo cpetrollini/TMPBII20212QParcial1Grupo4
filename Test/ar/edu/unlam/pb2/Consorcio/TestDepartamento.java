@@ -8,25 +8,26 @@ public class TestDepartamento {
 
 	@Test
 	public void queSePuedaCrearUnDepartamento() {
+		Propietario carlitos = new Propietario(39213672, "Ain", "Ponce");
+
 		Integer piso = 1;
 		Integer numero = 4;
 		Boolean cochera = false;
 		int cantidadDeAmbientes = 1;
 
-		Departamento prueba = new Departamento(piso, numero, cochera, cantidadDeAmbientes);
+		Departamento prueba = new Departamento(piso, numero, cochera, cantidadDeAmbientes, carlitos);
 		
 		assertNotNull(prueba); 
 	}
 
 	@Test
     public void mostrarFacturasAPagar() {
-        Departamento unoB = new Departamento(1, 2, false, 1);
-        Departamento dosC = new Departamento(2, 3, true, 2);
-        Departamento tresA = new Departamento(3, 1, false, 3);
+		Propietario carlitos = new Propietario(39213672, "Ain", "Ponce");
+        Departamento unoB = new Departamento(1, 2, false, 1, carlitos);
+        Departamento dosC = new Departamento(2, 3, true, 2, carlitos);
+        Departamento tresA = new Departamento(3, 1, false, 3, carlitos);
         Departamento[] departamentos = {unoB, dosC, tresA};
 
-        Propietario carlitos = new Propietario(39213672, "Ain", "Ponce");
-
-
+        
     }
 }

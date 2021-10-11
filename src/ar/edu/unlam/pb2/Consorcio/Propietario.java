@@ -27,18 +27,12 @@ public class Propietario extends Habitante {
 				}
 			}
 		}
-		super.setFacturasAPagar();
 		return arrayDeFacturasAPagar;
 	}
 
 	public Departamento[] getDeptosQuePosee() {
 		return deptosQuePosee;
 	}
-
-	public void setDeptosQuePosee(Departamento[] deptosQuePosee) {
-		this.deptosQuePosee = deptosQuePosee;
-	}
-
 	
 	
 }

@@ -17,11 +17,6 @@ public abstract class Habitante {
 	}
 
 	public abstract Factura[] getFacturasAPagar();
-	// obtiene las facturas a pagar. en la clase inquilino se va a sobreescribir el
-	// metodo filtrando solo las
-	// facturas que corresponden a los meses de su contrato, por lo tanto, un
-	// inquilino solo puede pagar las
-	// facturas que le corresponden
 
 	public void pagarFactura(Integer codigo) {
 		Factura[] arrayDeFacturasAPagar = this.getFacturasAPagar();

@@ -8,13 +8,13 @@ public class Factura {
 	private static Integer COD_FACTURA;
 	private Integer codFactura;
 	private Departamento departamento;
-	private Habitante habitante;
+	private Habitante titular;
 	private Boolean pagada;
 
 	public Factura(Departamento departamento) {
 		this.setCodFactura(COD_FACTURA);
 		COD_FACTURA++;
-		this.habitante = departamento.getHabitante();
+		this.titular = departamento.getTitular();
 		this.valor = departamento.valorActualDeLaExpensa();
 		this.pagada = false;
 		this.departamento = departamento;
@@ -37,12 +37,12 @@ public class Factura {
 		this.valor = precio;
 	}
 
-	public Habitante getHabitante() {
-		return habitante;
+	public Habitante getTitular() {
+		return titular;
 	}
 
-	public void setHabitante(Habitante habitante) {
-		this.habitante = habitante;
+	public void setTitular(Habitante titular) {
+		this.titular = titular;
 	}
 
 	public Double getValor() {

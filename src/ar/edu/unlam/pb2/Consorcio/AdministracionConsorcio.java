@@ -35,58 +35,84 @@ public class AdministracionConsorcio {
 		return this.habitantesConExpensasAlDia;
 	}
 
-	public boolean agregarDepartamento(Departamento nuevo) {
+	// crear recibo de pago a un depto
+
+	public boolean emitirNuevaFactura(Departamento dpto) {
 		boolean agregado = false;
-		for (int i = 0; i < departamentos.length; i++) {
-			if (this.departamentos[i] != null) {
-				this.departamentos[i] = nuevo;
-				agregado = true;
+		boolean yaExiste = false;
+
+		Factura facturaNueva = new Factura(dpto);
+		for (int i = 0; i < archivo.length; i++) {
+			if (this.archivo[i].getCodFactura().equals(facturaNueva.getCodFactura())) {
+				yaExiste = true;
 				break;
 			}
 		}
-		return agregado;
-	}
-
-	// crear recibo de pago a un depto
-
-	public boolean agregarReciboAlArchivo(Factura reciboNuevo) {
-		boolean agregado = false;
-		for (int i = 0; i < archivo.length; i++) {
-			if (this.archivo[i] == null) {
-				this.archivo[i] = reciboNuevo;
-				agregado = true;
+		if (!yaExiste) {
+			for (int i = 0; i < archivo.length; i++) {
+				if (this.archivo[i] == null) {
+					this.archivo[i] = facturaNueva;
+					agregado = true;
+				}
 			}
 		}
 		return agregado;
 	}
+	
+//	private boolean comprobarSiUnaFacturaYaFueEmitida() {
+//		return false;
+//	}
+	
+	public Integer cuantosDptsDebenExpensas() {
+        Integer deudores = 0;
+        for (int i = 0; i < departamentos.length; i++) {
+            if (departamentos[i] != null) {
+                if (!departamentos[i].getAlDia()) {
+                    deudores++;
+                }
+            }
+        }
+        return deudores;
+
+    }
+	
 
 	// AGREGAR DEPARTAMENTO SIN REPETIDOS
 	public boolean ingresarDepartamento(Departamento nuevo) {
 		boolean agregado = false;
-		boolean repetido = false;
-
-		for (int i = 0; i < departamentos.length; i++) {
-			if (departamentos != null) {
-				if (departamentos[i].getPiso().equals(nuevo.getPiso())
-						&& departamentos[i].getNumero().equals(nuevo.getNumero())) {
-					repetido = true;
+		if (!this.comprobarSiExisteUnDepartamento(nuevo)) {
+			for (int i = 0; i < departamentos.length; i++) {
+				if (departamentos[i] == null) {
+					departamentos[i] = nuevo;
+					for (int j = 0; j < nuevo.getPropietario().getDeptosQuePosee().length; j++) {
+						if (nuevo.getPropietario().getDeptosQuePosee()[j] == null) {
+							nuevo.getPropietario().getDeptosQuePosee()[j] = nuevo;
+						}
+					}
+					agregado = true;
 					break;
 				}
-			}
-		}
-
-		for (int i = 0; i < departamentos.length; i++) {
-			if (departamentos[i] == null && repetido == false) {
-				departamentos[i] = nuevo;
-				agregado = true;
-				break;
 			}
 		}
 		return agregado;
 	}
 
+	private boolean comprobarSiExisteUnDepartamento(Departamento buscado) {
+		boolean encontrado = false;
+		for (int i = 0; i < this.departamentos.length; i++) {
+			if (departamentos[i] != null) {
+				if (departamentos[i].getPiso().equals(buscado.getPiso())
+						&& departamentos[i].getNumero().equals(buscado.getNumero())) {
+					encontrado = true;
+					break;
+				}
+			}
+		}
+		return encontrado;
+	}
+
 	// AGREGAR HABITANTES SIN REPETIDOS
-	public boolean ingresarHabitante(Habitante nuevo) {
+	public boolean ingresarHabitante(Habitante nuevo, Departamento dtoQueHabita) {
 		boolean agregado = false;
 		boolean repetido = false;
 
@@ -103,9 +129,11 @@ public class AdministracionConsorcio {
 			if (habitantes[i] == null && repetido == false) {
 				habitantes[i] = nuevo;
 				agregado = true;
+				dtoQueHabita.setHabitante(nuevo);
 				break;
 			}
 		}
+
 		return agregado;
 	}
 
@@ -170,7 +198,5 @@ public class AdministracionConsorcio {
 	public void setArchivo(Factura[] archivo) {
 		this.archivo = archivo;
 	}
-	
-	
 
 }

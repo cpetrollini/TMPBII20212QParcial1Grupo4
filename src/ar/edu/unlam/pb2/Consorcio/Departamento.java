@@ -13,23 +13,19 @@ public class Departamento {
 	private Double valorAPagarExpensas;
 	private Integer porcentajeExtraPorDepartamento;
 	private Boolean alDia;
-	private TipoDeDepartamento tipoDepartamento; // cambie el nombre de la variable para que sea mas claro de que se
-													// trata
+	private TipoDeDepartamento tipoDepartamento; 
 	private Propietario propietario;
 	private Habitante habitante;
 	private Double valorActual;
 	private Factura[] historialDeExpensas = new Factura[12];
-	// este array guarda los ultimos 12 recibos para regstrar si estan pagos o no y
-	// cuando queda por pagar
 
-	public Departamento(Integer piso, Integer numero, Boolean cochera, int cantidadDeAmbientes) {
+	public Departamento(Integer piso, Integer numero, Boolean cochera, int cantidadDeAmbientes, Propietario propietario) {
 		this.piso = piso;
 		this.numero = numero;
 		this.cochera = cochera;
 		this.tipoDepartamento = this.definirTipo(cantidadDeAmbientes);
+		this.propietario = propietario;
 	}
-
-	// public abstract Integer PagoDeExpensas();
 
 	private TipoDeDepartamento definirTipo(int cantidadDeAmbientes) {
 		TipoDeDepartamento tipo = null;
@@ -131,6 +127,7 @@ public class Departamento {
 		EXTRA_TRESAMBIENTES = eXTRA_TRESAMBIENTES;
 	}
 
+	
 	public void verificarSiEstaAlDia() {
 		Boolean estaAlDia = true;
 		for (int i = 0; i < historialDeExpensas.length; i++) {
@@ -187,12 +184,55 @@ public class Departamento {
 		this.historialDeExpensas = historialDeExpensas;
 	}
 
-	public Habitante getHabitante() {
-		return habitante;
+	public Habitante getTitular() {
+		Habitante titular = this.propietario;
+		if(this.habitante == null) {
+		}else {
+			titular = this.habitante;
+		}
+		return titular;
 	}
 
 	public void setHabitante(Habitante habitante) {
 		this.habitante = habitante;
 	}
+
+	public Double getValorAPagarExpensas() {
+		return valorAPagarExpensas;
+	}
+
+	public void setValorAPagarExpensas(Double valorAPagarExpensas) {
+		this.valorAPagarExpensas = valorAPagarExpensas;
+	}
+
+	public Boolean getAlDia() {
+		return alDia;
+	}
+
+	public void setAlDia(Boolean alDia) {
+		this.alDia = alDia;
+	}
+
+	public Propietario getPropietario() {
+		return propietario;
+	}
+
+	public void setPropietario(Propietario propietario) {
+		this.propietario = propietario;
+	}
+	
+	public String toString() {
+        String resumenDeExpensasPagadas = "";
+        for (int i = 0; i < historialDeExpensas.length; i++) {
+            if (historialDeExpensas[i] != null) {
+            	if(historialDeExpensas[i].getPagada()) {
+            		resumenDeExpensasPagadas += historialDeExpensas[i].toString() + "\n";
+            	}
+            }
+        }
+        return resumenDeExpensasPagadas;
+    }
+	
+	
 //
 }
