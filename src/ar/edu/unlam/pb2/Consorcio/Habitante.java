@@ -15,8 +15,10 @@ public abstract class Habitante {
 		this.departamento = deptoQueHabita;
 	}
 
-	public abstract void pagarFactura();
-	//cambia el estado de una factura a pagada
+	public abstract void pagarFactura(Integer mes);
+	//cambia el estado de una factura a pagada dependiendo del mes
+	
+	public abstract void buscarUnaFacturaPorMes(Integer mes);
 	
 	public abstract Factura[] getFacturasAPagar();
 	//obtiene las facturas a pagar. en la clase inquilino se va a sobreescribir el metodo filtrando solo las 
@@ -60,8 +62,6 @@ public abstract class Habitante {
 			return false;
 		return true;
 	}
-	
-	x
 	
 
 }

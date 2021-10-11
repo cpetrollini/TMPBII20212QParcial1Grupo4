@@ -164,6 +164,14 @@ public class Departamento {
 		return true;
 	}
 
+	public Factura[] getHistorialDeExpensas() {
+		return historialDeExpensas;
+	}
+
+	public void setHistorialDeExpensas(Factura[] historialDeExpensas) {
+		this.historialDeExpensas = historialDeExpensas;
+	}
+
 	
 	
 //
