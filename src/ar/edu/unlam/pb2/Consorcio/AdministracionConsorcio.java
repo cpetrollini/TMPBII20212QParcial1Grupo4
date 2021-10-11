@@ -62,17 +62,33 @@ public class AdministracionConsorcio {
 	// AGREGAR DEPARTAMENTO
 	public boolean ingresarDepartamento(Departamento nuevo) {
 		boolean agregado = false;
-		boolean repetido = false;
-
-		for (int i = 0; i < departamentos.length; i++) {
-			if (departamentos[i] == null && repetido == false) {
-				departamentos[i] = nuevo;
-				agregado = true;
-				break;
+		if (!this.comprobarSiExisteUnDepartamento(nuevo)) {
+			for (int i = 0; i < departamentos.length; i++) {
+				if (departamentos[i] == null) {
+					departamentos[i] = nuevo;
+					agregado = true;
+					break;
+				}
 			}
 		}
 		return agregado;
 	}
+
+	private boolean comprobarSiExisteUnDepartamento(Departamento buscado) {
+		boolean encontrado = false;
+		for (int i = 0; i < this.departamentos.length; i++) {
+			if (departamentos[i] != null) {
+				if (departamentos[i].getPiso().equals(buscado.getPiso())
+						&& departamentos[i].getNumero().equals(buscado.getNumero())) {
+					encontrado = true;
+					break;
+				}
+			}
+		}
+		return encontrado;
+	}
+
+	
 
 	// AGREGAR HABITANTES
 	public boolean ingresarHabitante(Habitante nuevo) {

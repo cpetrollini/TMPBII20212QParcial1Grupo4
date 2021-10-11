@@ -6,6 +6,7 @@ public class Monoambiente extends Departamento {
 	private Integer montoTotalAPagarServicios;// luz y agua
 	private Integer valorAPagarExpensas;
 	private Habitante habitante;
+//	ESTADOEXPENSA TRUE=DEBE FALSE=DEBE
 	private Boolean estadoDeExpensa = true;
 	private Boolean pagoDelHabitante = false;
 	private Integer pagoExpensa;
