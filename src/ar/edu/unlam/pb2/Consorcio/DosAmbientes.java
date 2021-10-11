@@ -28,6 +28,7 @@ public class DosAmbientes extends Departamento {
 		this.montoTotalAPagarServicios = super.getServicioComunes() + this.pagoExtraordinario;
 	}
 
+	@Override
 	public void calcularGastosExpensas() {
 		if (super.getCochera()) {
 			this.valorAPagarExpensas = super.getEXTRA_COCHERA();
@@ -38,6 +39,20 @@ public class DosAmbientes extends Departamento {
 					+ super.getEXTRA_DOSAMBIENTES();
 		}
 
+	}
+
+	@Override
+	public Boolean getPagoDelHabitante() {
+		return pagoDelHabitante;
+	}
+
+	@Override
+	public Boolean getEstadoDeExpensa() {
+		if (this.valorAPagarExpensas.equals(0) && this.pagoDelHabitante) {
+			habitante.setEstadoDeExpensas(false);
+		}
+
+		return estadoDeExpensa;
 	}
 
 	public void pagarExpensas(Integer pagoExpensa) {
@@ -83,14 +98,6 @@ public class DosAmbientes extends Departamento {
 		return null;
 	}
 
-	public Boolean getEstadoDeExpensa() {
-		if (this.valorAPagarExpensas.equals(0) && this.pagoDelHabitante) {
-			habitante.setEstadoDeExpensas(false);
-		}
-
-		return estadoDeExpensa;
-	}
-
 	public Integer getValorAPagarExpensas() {
 		return valorAPagarExpensas;
 	}
@@ -111,16 +118,10 @@ public class DosAmbientes extends Departamento {
 		this.montoTotalAPagarServicios = montoTotalAPagarServicios;
 	}
 
-	public Boolean getPagoDelHabitante() {
-		return pagoDelHabitante;
-	}
-
-	// GET HABITANTE
 	public Habitante getHabitante() {
 		return habitante;
 	}
 
-	// SET HABITANTE
 	public void setHabitante(Habitante habitante) {
 		this.habitante = habitante;
 	}

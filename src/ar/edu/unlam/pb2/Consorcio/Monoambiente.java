@@ -41,6 +41,20 @@ public class Monoambiente extends Departamento {
 
 	}
 
+	@Override
+	public Boolean getPagoDelHabitante() {
+		return pagoDelHabitante;
+	}
+
+	@Override
+	public Boolean getEstadoDeExpensa() {
+		if (this.valorAPagarExpensas.equals(0) && this.pagoDelHabitante) {
+			habitante.setEstadoDeExpensas(false);
+		}
+
+		return estadoDeExpensa;
+	}
+
 	public void pagarExpensas(Integer pagoExpensa) {
 		this.pagoExpensa = pagoExpensa;
 
@@ -84,14 +98,6 @@ public class Monoambiente extends Departamento {
 		return null;
 	}
 
-	public Boolean getEstadoDeExpensa() {
-		if (this.valorAPagarExpensas.equals(0) && this.pagoDelHabitante) {
-			habitante.setEstadoDeExpensas(false);
-		}
-
-		return estadoDeExpensa;
-	}
-
 	public Integer getValorAPagarExpensas() {
 		return valorAPagarExpensas;
 	}
@@ -110,10 +116,6 @@ public class Monoambiente extends Departamento {
 
 	public void setMontoTotalAPagarServicios(Integer montoTotalAPagarServicios) {
 		this.montoTotalAPagarServicios = montoTotalAPagarServicios;
-	}
-
-	public Boolean getPagoDelHabitante() {
-		return pagoDelHabitante;
 	}
 
 	public Habitante getHabitante() {
