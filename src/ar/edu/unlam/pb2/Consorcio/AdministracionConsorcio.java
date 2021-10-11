@@ -4,26 +4,13 @@ public class AdministracionConsorcio {
 
 	private Habitante[] habitantes;
 	private Departamento[] departamentos;
-
-//	private Habitante[] habitantesConExpensasAlDia; // y esto, como se hace?
-
 	private Departamento[] recibos;
-	
-//	ESTE ARRAY TODAVIA NO TIENE METODO QUE LO UTILICE, PERO cuantosDebenExpensas() YA GUARDO QUE DPT DEBEN EN ESTE ATRIBUTO
-	private Departamento[] debeExpensas; 
 
 	public AdministracionConsorcio() {
 		this.departamentos = new Departamento[10];
 		this.habitantes = new Habitante[10];
 		this.recibos = new Departamento[10];
-		this.debeExpensas = new Departamento[10];
-
 	}
-
-	
-	// ESTE ES UN PROBLEMA DE LOGICA, PORQUE SOLO RECIBE UN PAGO POR HABITANTE
-	// NO ES NECESARIO EL REPETIDO PORQUE NO ESTAMOS TOMANDO PAGO POR FECHAS
-	// EL REPETIDO EN ESTE CASO (REIBO) PUEDE OCURRIR
 	
 	// INGRESAR UN RECIBO DE PAGO DE EXPENSAS 
 	public boolean ingresarRecibo(Integer numero, Integer piso) {
@@ -54,19 +41,7 @@ public class AdministracionConsorcio {
 		return resumenDeExpensasPagadas;
 	}
 
-	// LISTADO DE EXPENSAS (se recorre en el main con un FOR)
-//	public Recibo[] getlistadodDeExpensas() {
-//		return resumenDeExpensas;
-//	}
-//	for (int i = 0; i < departamentos.length; i++) {
-//	if (departamentos != null) {
-//		if (departamentos[i].getPiso().equals(nuevo.getPiso())
-//				&& departamentos[i].getNumero().equals(nuevo.getNumero())) {
-//			repetido = true;
-//			break;
-//		}
-//	}
-//}
+
 	
 //	NUMERO DE DEUDORES
 	public Integer cuantosDptsDebenExpensas() {
@@ -76,7 +51,6 @@ public class AdministracionConsorcio {
 
 			if (departamentos[i] != null) {
 				if (departamentos[i].getEstadoDeExpensa()) {
-					debeExpensas[i] = departamentos[i];
 					deudores++; 
 				}
 			}

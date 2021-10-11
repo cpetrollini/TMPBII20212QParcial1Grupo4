@@ -5,7 +5,6 @@ public class Habitante {
 	private Integer dni;
 	private String nombre;
 	private String apellido;
-// FALSE : EXPENSA PAGADA, TRUE: DEBE 
 	private Boolean estadoDeExpensas;
 
 	public Habitante(Integer dni, String nombre, String apellido) {
@@ -15,8 +14,6 @@ public class Habitante {
 		this.apellido = apellido;
 
 	}
-
-	// DONDE PONER EL RECIBO
 
 	public Integer getDni() {
 		return dni;
@@ -45,7 +42,6 @@ public class Habitante {
 	public Boolean getEstadoDeExpensas() {
 		return estadoDeExpensas;
 	}
-//NO SE SI ES NECESARIO ESTE METODO, YA HAY UNA PARECIDO EN LA CLASES DE AMBIESTES
 	public void setEstadoDeExpensas(Boolean estadoDeExpensas) {
 		this.estadoDeExpensas = estadoDeExpensas;
 	}

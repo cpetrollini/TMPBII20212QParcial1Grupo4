@@ -17,23 +17,19 @@ public class PruebaDeReciboCompleto {
 		
 		departamentoMonoambiente.calcularGastosExpensas();
 		
-		departamentoMonoambiente.pagarExpensas(1500);
+		departamentoMonoambiente.pagarExpensas(7000);
 		System.out.println(departamentoMonoambiente.getValorAPagarExpensas());
 
 
 		// DICE SI EL HABITANTE TIENE PENDIENTE DE PAGO (TRUE) O YA PAGO TOD (FALSE)
 		elHabitante.getEstadoDeExpensas();
 
-//		System.out.println(departamentoMonoambiente.toString());
 
-//		Recibo octubre = new Recibo(departamentoMonoambiente, elHabitante);
-//		EL RECIBO SOLO TIENE QUE SEGUIR SOLO AL DEPARTAMENTO
 
 		AdministracionConsorcio laPerlaAdministracionConsorcio = new AdministracionConsorcio();
 
 		System.out.println(laPerlaAdministracionConsorcio.ingresarDepartamento(departamentoMonoambiente));
 		System.out.println(laPerlaAdministracionConsorcio.ingresarRecibo(numero, piso));
-//		System.out.println(departamentoMonoambiente.valorExpensasAPagar());
 		
 		Integer piso2 = 1;
 		Integer numero2 = 6;
@@ -56,12 +52,7 @@ public class PruebaDeReciboCompleto {
 		System.out.println(laPerlaAdministracionConsorcio.ingresarDepartamento(departamentoMonoambiente2));
 		System.out.println(laPerlaAdministracionConsorcio.ingresarRecibo(numero2, piso2));
 		System.out.println(laPerlaAdministracionConsorcio.toString());
-//		NO SON LOS PARAMETROS QUE BUSCAMOS
 
-//		laPerlaAdministracionConsorcio.ingresarRecibo(octubre);
-
-//to string
-//		System.out.println(laPerlaAdministracionConsorcio);
 
 	}
 
