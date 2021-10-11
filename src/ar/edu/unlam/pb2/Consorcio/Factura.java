@@ -1,20 +1,24 @@
 package ar.edu.unlam.pb2.Consorcio;
 
+import java.util.Objects;
+
 public class Factura {
 
 	private Double valor;
-	private static int mes; 
-	private static int anio = 2021;
+	private static int MES; 
+	private Integer mesDeLaFactura;
+	private static int ANIO = 2021;
 	private Departamento departamento;
 	private Habitante habitante;
 	private Boolean pagada;
 
 	public Factura(Habitante habitante) {
-		setMes(mes++);
+		setMES(MES++);
 		this.habitante = habitante;
 		this.valor = this.departamento.valorActualDeLaExpensa();
 		this.pagada = false;
 		this.departamento = habitante.getDepartamento();
+		this.mesDeLaFactura = MES;
 	}
 
 	
@@ -37,7 +41,7 @@ public class Factura {
 	}
 
 	public Integer getMes() {
-		return mes;
+		return MES;
 	}
 
 	public Habitante getHabitante() {
@@ -53,13 +57,40 @@ public class Factura {
 		return valor;
 	}
 
-	public static void setMes(int mes) {
-		if(mes>=12) {
-			Factura.mes = 1;
-			Factura.anio++;
+	public static void setMES(int MES) {
+		if(MES>=12) {
+			Factura.MES = 1;
+			Factura.ANIO++;
 		}
 	}
-	
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(mesDeLaFactura);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Factura other = (Factura) obj;
+		return Objects.equals(mesDeLaFactura, other.mesDeLaFactura);
+	}
+
+
+	public Integer getMesDeLaFactura() {
+		return mesDeLaFactura;
+	}
+
+
+	public void setMesDeLaFactura(Integer mesDeLaFactura) {
+		this.mesDeLaFactura = mesDeLaFactura;
+	}
 	
 	
 	

@@ -1,5 +1,7 @@
 package ar.edu.unlam.pb2.Consorcio;
 
+import java.util.Iterator;
+
 public class Inquilino extends Habitante {
 
 	//
@@ -17,7 +19,13 @@ public class Inquilino extends Habitante {
 	@Override
 	public void pagarFactura(Integer mes) {
 		Factura[] arrayDeFacturasAPagar = this.getFacturasAPagar();
-		
+		for (int i = 0; i < arrayDeFacturasAPagar.length; i++) {
+			if (arrayDeFacturasAPagar[i] != null) {
+				if (arrayDeFacturasAPagar[i].getMes().equals(mes)) {
+					arrayDeFacturasAPagar[i].setPagada(true);
+				}
+			}
+		}
 			
 		}
 	
@@ -40,6 +48,7 @@ public class Inquilino extends Habitante {
 		super.setFacturasAPagar();
 		return arrayDeFacturas;
 	}
+	
 
 
 
