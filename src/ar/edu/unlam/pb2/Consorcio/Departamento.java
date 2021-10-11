@@ -22,7 +22,7 @@ public abstract class Departamento {
 	}
 
 //----------------------------------------------------------------------------
-	public abstract Integer valorExpensasAPagar();
+	public abstract void calcularGastosExpensas();
 	
 	public abstract Boolean getPagoDelHabitante();
 	

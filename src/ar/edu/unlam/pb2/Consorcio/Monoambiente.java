@@ -28,22 +28,24 @@ public class Monoambiente extends Departamento {
 		this.montoTotalAPagarServicios = super.getServicioComunes() + this.pagoExtraordinario;
 	}
 
-	public Integer valorExpensasAPagar() {
+	
+	public void calcularGastosExpensas() {
+		if (super.getCochera()) {
+			this.valorAPagarExpensas= super.getEXTRA_COCHERA();
+			this.valorAPagarExpensas += this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()
+			+ super.getEXTRA_MONOAMBIENTE();
+		}
+		else {
+		this.valorAPagarExpensas = this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()
+				+ super.getEXTRA_MONOAMBIENTE();
+		}
 		
-		return this.valorAPagarExpensas;
 	}
 
 	public void pagarExpensas(Integer pagoExpensa) {
 		
 		this.pagoExpensa = pagoExpensa;
-
-		if (super.getCochera()) {
-			this.valorAPagarExpensas += super.getEXTRA_COCHERA();
-		}
-		this.valorAPagarExpensas += this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()
-				+ super.getEXTRA_MONOAMBIENTE();
-
-		
+	
 		if (pagoExpensa != 0) {
 			this.pagoDelHabitante = true;
 		}
@@ -69,6 +71,10 @@ public class Monoambiente extends Departamento {
 		}
 
 		return estadoDeExpensa;
+	}
+	
+	public Integer getValorAPagarExpensas() {
+		return valorAPagarExpensas;
 	}
 
 	public Integer getPagoExtraordinario() {

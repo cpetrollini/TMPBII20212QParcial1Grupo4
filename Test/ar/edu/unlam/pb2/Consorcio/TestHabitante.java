@@ -15,7 +15,7 @@ public class TestHabitante {
 		String apellido = "Albornoz";
 		Boolean estadoDeExpensas = true;
 
-		Habitante joseAlbornoz = new Habitante(dni, nombre, apellido, estadoDeExpensas);
+		Habitante joseAlbornoz = new Habitante(dni, nombre, apellido);
 
 		assertNotNull(joseAlbornoz);
 		assertEquals(dni, joseAlbornoz.getDni());

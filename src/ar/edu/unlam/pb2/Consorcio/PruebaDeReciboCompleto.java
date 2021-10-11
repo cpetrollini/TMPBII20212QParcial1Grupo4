@@ -15,10 +15,10 @@ public class PruebaDeReciboCompleto {
 
 		departamentoMonoambiente.serviciosComunesAPagar(montoServiciosComunes);
 		
-		System.out.println(departamentoMonoambiente.valorExpensasAPagar());
+		departamentoMonoambiente.calcularGastosExpensas();
 		
 		departamentoMonoambiente.pagarExpensas(1500);
-		System.out.println(departamentoMonoambiente.valorExpensasAPagar());
+		System.out.println(departamentoMonoambiente.getValorAPagarExpensas());
 
 
 		// DICE SI EL HABITANTE TIENE PENDIENTE DE PAGO (TRUE) O YA PAGO TOD (FALSE)
@@ -47,10 +47,10 @@ public class PruebaDeReciboCompleto {
 
 		departamentoMonoambiente2.serviciosComunesAPagar(montoServiciosComunes2);
 		
-		System.out.println(departamentoMonoambiente2.valorExpensasAPagar());
+		departamentoMonoambiente2.calcularGastosExpensas();
 		
 		departamentoMonoambiente2.pagarExpensas(1500);
-		System.out.println(departamentoMonoambiente2.valorExpensasAPagar());
+		System.out.println(departamentoMonoambiente2.getValorAPagarExpensas());
 		
 		
 		System.out.println(laPerlaAdministracionConsorcio.ingresarDepartamento(departamentoMonoambiente2));

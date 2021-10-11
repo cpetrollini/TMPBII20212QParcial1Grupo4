@@ -28,22 +28,24 @@ public class DosAmbientes extends Departamento {
 		this.montoTotalAPagarServicios = super.getServicioComunes() + this.pagoExtraordinario;
 	}
 
-	public Integer valorExpensasAPagar() {
+	
+	public void calcularGastosExpensas() {
+		if (super.getCochera()) {
+			this.valorAPagarExpensas= super.getEXTRA_COCHERA();
+			this.valorAPagarExpensas += this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()
+			+ super.getEXTRA_DOSAMBIENTES();
+		}
+		else {
+		this.valorAPagarExpensas= this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()
+				+ super.getEXTRA_DOSAMBIENTES();
+		}
 		
-		return this.valorAPagarExpensas;
 	}
 
 	public void pagarExpensas(Integer pagoExpensa) {
 		
 		this.pagoExpensa = pagoExpensa;
-
-		if (super.getCochera()) {
-			this.valorAPagarExpensas += super.getEXTRA_COCHERA();
-		}
-		this.valorAPagarExpensas += this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()
-				+ super.getEXTRA_DOSAMBIENTES();
-
-		
+	
 		if (pagoExpensa != 0) {
 			this.pagoDelHabitante = true;
 		}
@@ -69,6 +71,10 @@ public class DosAmbientes extends Departamento {
 		}
 
 		return estadoDeExpensa;
+	}
+	
+	public Integer getValorAPagarExpensas() {
+		return valorAPagarExpensas;
 	}
 
 	public Integer getPagoExtraordinario() {

@@ -9,6 +9,7 @@ public class Habitante {
 	private Boolean estadoDeExpensas;
 
 	public Habitante(Integer dni, String nombre, String apellido) {
+		this.estadoDeExpensas=true;
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
