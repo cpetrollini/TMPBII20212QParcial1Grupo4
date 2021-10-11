@@ -5,20 +5,20 @@ import java.util.Objects;
 public class Factura {
 
 	private Double valor;
-	private static int MES;
-	private Integer mesDeLaFactura;
-	private static int ANIO = 2021;
+	private static Integer COD_FACTURA;
+	private Integer codFactura;
 	private Departamento departamento;
 	private Habitante habitante;
 	private Boolean pagada;
 
-	public Factura(Habitante habitante) {
-		setMES(MES++);
-		this.habitante = habitante;
-		this.valor = this.departamento.valorActualDeLaExpensa();
+	public Factura(Departamento departamento) {
+		this.setCodFactura(COD_FACTURA);
+		COD_FACTURA++;
+		this.habitante = departamento.getHabitante();
+		this.valor = departamento.valorActualDeLaExpensa();
 		this.pagada = false;
-		this.departamento = habitante.getDepartamento();
-		this.mesDeLaFactura = MES;
+		this.departamento = departamento;
+		
 	}
 
 	public Boolean getPagada() {
@@ -37,10 +37,6 @@ public class Factura {
 		this.valor = precio;
 	}
 
-	public Integer getMes() {
-		return MES;
-	}
-
 	public Habitante getHabitante() {
 		return habitante;
 	}
@@ -53,16 +49,17 @@ public class Factura {
 		return valor;
 	}
 
-	public static void setMES(int MES) {
-		if (MES >= 12) {
-			Factura.MES = 1;
-			Factura.ANIO++;
-		}
+	public static Integer getCOD_FACTURA() {
+		return COD_FACTURA;
 	}
+ 
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(mesDeLaFactura);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codFactura == null) ? 0 : codFactura.hashCode());
+		return result;
 	}
 
 	@Override
@@ -74,15 +71,33 @@ public class Factura {
 		if (getClass() != obj.getClass())
 			return false;
 		Factura other = (Factura) obj;
-		return Objects.equals(mesDeLaFactura, other.mesDeLaFactura);
+		if (codFactura == null) {
+			if (other.codFactura != null)
+				return false;
+		} else if (!codFactura.equals(other.codFactura))
+			return false;
+		return true;
 	}
 
-	public Integer getMesDeLaFactura() {
-		return mesDeLaFactura;
+	public Departamento getDepartamento() {
+		return departamento;
 	}
 
-	public void setMesDeLaFactura(Integer mesDeLaFactura) {
-		this.mesDeLaFactura = mesDeLaFactura;
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
 	}
 
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
+	public Integer getCodFactura() {
+		return codFactura;
+	}
+
+	public void setCodFactura(Integer codFactura) {
+		this.codFactura = codFactura;
+	}
+
+	
 }

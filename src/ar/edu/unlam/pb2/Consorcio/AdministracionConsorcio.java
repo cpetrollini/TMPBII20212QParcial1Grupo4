@@ -2,22 +2,39 @@ package ar.edu.unlam.pb2.Consorcio;
 
 public class AdministracionConsorcio {
 
-	//definir el comportamiento del consorcio
-	//resumen de expensas: detalle de los importes de cada depto
+	// definir el comportamiento del consorcio
+	// resumen de expensas: detalle de los importes de cada depto
 //	que esta pago y que no, que deuda tiene c/u
-	
-	
+
 	private Habitante[] habitantes;
 	private Departamento[] departamentos;
 	private Habitante[] habitantesConExpensasAlDia;
 	private Factura[] archivo;
 
 	public AdministracionConsorcio() {
-		this.departamentos = new Departamento[4];
-		this.habitantes = new Habitante[4];
-		this.habitantesConExpensasAlDia = new Habitante[4];
+		this.departamentos = new Departamento[10];
+		this.habitantes = new Habitante[10];
+		this.habitantesConExpensasAlDia = new Habitante[10];
 	}
-	
+
+	public Habitante[] filtrarHabitantesConExpensasAlDia() {
+		for (int i = 0; i < this.habitantes.length; i++) {
+			if (this.habitantes[i] != null) {
+				if (this.habitantes[i].getDepartamento() != null) {
+					if (this.habitantes[i].getDepartamento().isAlDia()) {
+						for (int j = 0; j < this.habitantesConExpensasAlDia.length; j++) {
+							if (this.habitantesConExpensasAlDia[j] == null) {
+								this.habitantesConExpensasAlDia[j] = this.habitantes[i];
+							}
+
+						}
+					}
+				}
+			}
+		}
+		return this.habitantesConExpensasAlDia;
+	}
+
 	public boolean agregarDepartamento(Departamento nuevo) {
 		boolean agregado = false;
 		for (int i = 0; i < departamentos.length; i++) {
@@ -121,7 +138,7 @@ public class AdministracionConsorcio {
 		}
 		return encontrado;
 	}
-	
+
 	public Departamento[] getDepartamentos() {
 		return departamentos;
 	}
@@ -129,5 +146,31 @@ public class AdministracionConsorcio {
 	public void setDepartamentos(Departamento[] departamentos) {
 		this.departamentos = departamentos;
 	}
+
+	public Habitante[] getHabitantes() {
+		return habitantes;
+	}
+
+	public void setHabitantes(Habitante[] habitantes) {
+		this.habitantes = habitantes;
+	}
+
+	public Habitante[] getHabitantesConExpensasAlDia() {
+		return habitantesConExpensasAlDia;
+	}
+
+	public void setHabitantesConExpensasAlDia(Habitante[] habitantesConExpensasAlDia) {
+		this.habitantesConExpensasAlDia = habitantesConExpensasAlDia;
+	}
+
+	public Factura[] getArchivo() {
+		return archivo;
+	}
+
+	public void setArchivo(Factura[] archivo) {
+		this.archivo = archivo;
+	}
+	
+	
 
 }

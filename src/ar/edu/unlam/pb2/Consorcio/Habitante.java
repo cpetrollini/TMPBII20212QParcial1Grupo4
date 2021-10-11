@@ -23,11 +23,11 @@ public abstract class Habitante {
 	// inquilino solo puede pagar las
 	// facturas que le corresponden
 
-	public void pagarFactura(Integer mes) {
+	public void pagarFactura(Integer codigo) {
 		Factura[] arrayDeFacturasAPagar = this.getFacturasAPagar();
 		for (int i = 0; i < arrayDeFacturasAPagar.length; i++) {
 			if (arrayDeFacturasAPagar[i] != null) {
-				if (arrayDeFacturasAPagar[i].getMes().equals(mes)) {
+				if (arrayDeFacturasAPagar[i].getCodFactura().equals(codigo)) {
 					arrayDeFacturasAPagar[i].setPagada(true);
 				}
 			}

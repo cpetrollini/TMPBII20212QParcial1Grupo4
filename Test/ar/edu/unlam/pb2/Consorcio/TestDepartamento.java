@@ -18,4 +18,15 @@ public class TestDepartamento {
 		assertNotNull(prueba); 
 	}
 
+	@Test
+    public void mostrarFacturasAPagar() {
+        Departamento unoB = new Departamento(1, 2, false, 1);
+        Departamento dosC = new Departamento(2, 3, true, 2);
+        Departamento tresA = new Departamento(3, 1, false, 3);
+        Departamento[] departamentos = {unoB, dosC, tresA};
+
+        Propietario carlitos = new Propietario(39213672, "Ain", "Ponce");
+
+
+    }
 }

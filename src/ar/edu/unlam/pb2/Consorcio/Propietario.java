@@ -4,7 +4,7 @@ public class Propietario extends Habitante {
 
 	private Departamento[] deptosQuePosee;
 
-	public Propietario(Integer dni, String nombre, String apellido, Departamento[] deptoQuePosee) {
+	public Propietario(Integer dni, String nombre, String apellido) {
 		super(dni, nombre, apellido);
 		this.deptosQuePosee = new Departamento[10];
 	}
@@ -31,4 +31,14 @@ public class Propietario extends Habitante {
 		return arrayDeFacturasAPagar;
 	}
 
+	public Departamento[] getDeptosQuePosee() {
+		return deptosQuePosee;
+	}
+
+	public void setDeptosQuePosee(Departamento[] deptosQuePosee) {
+		this.deptosQuePosee = deptosQuePosee;
+	}
+
+	
+	
 }
