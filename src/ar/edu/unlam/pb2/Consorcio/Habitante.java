@@ -7,6 +7,9 @@ public abstract class Habitante {
 	private String apellido;
 	private Boolean EstadoDeExpensas;
 	private Departamento departamento;
+	private Factura[] facturasAPagar;
+
+
 
 	public Habitante(Integer dni, String nombre, String apellido, Departamento deptoQueHabita) {
 		this.dni = dni;
@@ -18,7 +21,7 @@ public abstract class Habitante {
 	public abstract void pagarFactura(Integer mes);
 	//cambia el estado de una factura a pagada dependiendo del mes
 	
-	public abstract void buscarUnaFacturaPorMes(Integer mes);
+//	public abstract Factura[] filtrarUnaFactura(Habitante habitante, Factura[] arrayAFiltrar);
 	
 	public abstract Factura[] getFacturasAPagar();
 	//obtiene las facturas a pagar. en la clase inquilino se va a sobreescribir el metodo filtrando solo las 
@@ -62,6 +65,11 @@ public abstract class Habitante {
 			return false;
 		return true;
 	}
+	
+	public void setFacturasAPagar() {
+		this.facturasAPagar = this.getFacturasAPagar();
+	}
+	
 	
 
 }

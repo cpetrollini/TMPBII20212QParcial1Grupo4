@@ -18,13 +18,10 @@ public class Inquilino extends Habitante {
 	public void pagarFactura(Integer mes) {
 		Factura[] arrayDeFacturasAPagar = this.getFacturasAPagar();
 		
-	}
+			
+		}
+	
 
-	@Override
-	public void buscarUnaFacturaPorMes(Integer mes) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	@Override
 	public Factura[] getFacturasAPagar() {
@@ -40,6 +37,7 @@ public class Inquilino extends Habitante {
 				}
 			}
 		}
+		super.setFacturasAPagar();
 		return arrayDeFacturas;
 	}
 
