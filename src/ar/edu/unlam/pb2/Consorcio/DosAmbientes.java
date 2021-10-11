@@ -65,7 +65,7 @@ public class DosAmbientes extends Departamento {
 						+ super.getEXTRA_COCHERA() + "\n" + "Valor Basico de Expensas: "
 						+ super.getVALOR_BASICO_EXPENSAS()
 
-						+ "\n" + "Dpt Monoambiente: " + super.getEXTRA_DOSAMBIENTES() + " \n" + "TOTAL: "
+						+ "\n" + "Dpt Dos ambientes: " + super.getEXTRA_DOSAMBIENTES() + " \n" + "TOTAL: "
 						+ this.pagoExpensa;
 			} else {
 				return "Departamento: " + super.getNumero() + " piso: " + super.getPiso() + " habitante: "
@@ -76,7 +76,7 @@ public class DosAmbientes extends Departamento {
 						+ super.getEXTRA_COCHERA() + "\n" + "Valor Basico de Expensas: "
 						+ super.getVALOR_BASICO_EXPENSAS()
 
-						+ "\n" + "Dpt Monoambiente: " + super.getEXTRA_DOSAMBIENTES() + " \n" + "TOTAL PAGADO: "
+						+ "\n" + "Dpt Dos ambientes: " + super.getEXTRA_DOSAMBIENTES() + " \n" + "TOTAL PAGADO: "
 						+ this.pagoExpensa + "\n" + "EXPENSA ADEUDADA: " + getValorAPagarExpensas();
 			}
 		}

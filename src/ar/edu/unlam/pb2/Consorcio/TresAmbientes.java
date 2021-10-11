@@ -65,7 +65,7 @@ public class TresAmbientes extends Departamento {
 						+ super.getEXTRA_COCHERA() + "\n" + "Valor Basico de Expensas: "
 						+ super.getVALOR_BASICO_EXPENSAS()
 
-						+ "\n" + "Dpt Monoambiente: " + super.getEXTRA_TRESAMBIENTES() + " \n" + "TOTAL: "
+						+ "\n" + "Dpt Tres Ambientes: " + super.getEXTRA_TRESAMBIENTES() + " \n" + "TOTAL: "
 						+ this.pagoExpensa;
 			} else {
 				return "Departamento: " + super.getNumero() + " piso: " + super.getPiso() + " habitante: "
@@ -76,7 +76,7 @@ public class TresAmbientes extends Departamento {
 						+ super.getEXTRA_COCHERA() + "\n" + "Valor Basico de Expensas: "
 						+ super.getVALOR_BASICO_EXPENSAS()
 
-						+ "\n" + "Dpt Monoambiente: " + super.getEXTRA_TRESAMBIENTES() + " \n" + "TOTAL PAGADO: "
+						+ "\n" + "Dpt Tres Ambientes: " + super.getEXTRA_TRESAMBIENTES() + " \n" + "TOTAL PAGADO: "
 						+ this.pagoExpensa + "\n" + "EXPENSA ADEUDADA: " + getValorAPagarExpensas();
 			}
 		}
