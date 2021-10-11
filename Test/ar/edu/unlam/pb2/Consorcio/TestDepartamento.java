@@ -7,10 +7,15 @@ import org.junit.Test;
 public class TestDepartamento {
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+	public void queSePuedaCrearUnDepartamento() {
+		Integer piso = 1;
+		Integer numero = 4;
+		Boolean cochera = false;
+		int cantidadDeAmbientes = 1;
 
-	
+		Departamento prueba = new Departamento(piso, numero, cochera, cantidadDeAmbientes);
+		
+		assertNotNull(prueba); 
+	}
 
 }

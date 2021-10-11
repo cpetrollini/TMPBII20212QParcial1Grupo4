@@ -19,7 +19,7 @@ public class Departamento {
 	private Factura[] historialDeExpensas = new Factura [12];
 	//este array guarda los ultimos 12 recibos para regstrar si estan pagos o no y cuando queda por pagar
 	
-	public Departamento(Integer piso, Integer numero, Boolean cochera, int cantidadDeAmbientes, Propietario propietario) {
+	public Departamento(Integer piso, Integer numero, Boolean cochera, int cantidadDeAmbientes) {
 		this.piso = piso;
 		this.numero = numero;
 		this.cochera = cochera;
