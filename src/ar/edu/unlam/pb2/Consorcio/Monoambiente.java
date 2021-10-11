@@ -28,23 +28,22 @@ public class Monoambiente extends Departamento {
 		this.montoTotalAPagarServicios = super.getServicioComunes() + this.pagoExtraordinario;
 	}
 
-	
+	@Override
 	public void calcularGastosExpensas() {
 		if (super.getCochera()) {
-			this.valorAPagarExpensas= super.getEXTRA_COCHERA();
+			this.valorAPagarExpensas = super.getEXTRA_COCHERA();
 			this.valorAPagarExpensas += this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()
-			+ super.getEXTRA_MONOAMBIENTE();
+					+ super.getEXTRA_MONOAMBIENTE();
+		} else {
+			this.valorAPagarExpensas = this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()
+					+ super.getEXTRA_MONOAMBIENTE();
 		}
-		else {
-		this.valorAPagarExpensas = this.montoTotalAPagarServicios + super.getVALOR_BASICO_EXPENSAS()
-				+ super.getEXTRA_MONOAMBIENTE();
-		}
-		
+
 	}
 
 	public void pagarExpensas(Integer pagoExpensa) {
 		this.pagoExpensa = pagoExpensa;
-	
+
 		if (pagoExpensa != 0) {
 			this.pagoDelHabitante = true;
 		}
@@ -58,23 +57,28 @@ public class Monoambiente extends Departamento {
 	// RECIBO
 	public String toString() {
 		if (this.pagoDelHabitante) {
-			if(getValorAPagarExpensas().equals(0)) {
-		        return "Departamento: " + super.getNumero() + " piso: " + super.getPiso() + " habitante: " + this.habitante.getApellido() + "\n" + "EXPENSAS  " + "\n"
+			if (getValorAPagarExpensas().equals(0)) {
+				return "Departamento: " + super.getNumero() + " piso: " + super.getPiso() + " habitante: "
+						+ this.habitante.getApellido() + "\n" + "EXPENSAS  " + "\n"
 
-		                + "Servicios Basicos (Luz, Agua): " + this.getMontoTotalAPagarServicios() + "\n" + "Cochera: "
+						+ "Servicios Basicos (Luz, Agua): " + this.getMontoTotalAPagarServicios() + "\n" + "Cochera: "
 
-		                + super.getEXTRA_COCHERA() + "\n" + "Valor Basico de Expensas: " + super.getVALOR_BASICO_EXPENSAS()
+						+ super.getEXTRA_COCHERA() + "\n" + "Valor Basico de Expensas: "
+						+ super.getVALOR_BASICO_EXPENSAS()
 
-		                + "\n" + "Dpt Monoambiente: " + super.getEXTRA_MONOAMBIENTE() + " \n" + "TOTAL: " + this.pagoExpensa;
-			}
-			else {
-			      return "Departamento: " + super.getNumero() + " piso: " + super.getPiso() + " habitante: " + this.habitante.getApellido() + "\n" + "EXPENSAS  " + "\n"
+						+ "\n" + "Dpt Monoambiente: " + super.getEXTRA_MONOAMBIENTE() + " \n" + "TOTAL: "
+						+ this.pagoExpensa;
+			} else {
+				return "Departamento: " + super.getNumero() + " piso: " + super.getPiso() + " habitante: "
+						+ this.habitante.getApellido() + "\n" + "EXPENSAS  " + "\n"
 
-		                + "Servicios Basicos (Luz, Agua): " + this.getMontoTotalAPagarServicios() + "\n" + "Cochera: "
+						+ "Servicios Basicos (Luz, Agua): " + this.getMontoTotalAPagarServicios() + "\n" + "Cochera: "
 
-		                + super.getEXTRA_COCHERA() + "\n" + "Valor Basico de Expensas: " + super.getVALOR_BASICO_EXPENSAS()
+						+ super.getEXTRA_COCHERA() + "\n" + "Valor Basico de Expensas: "
+						+ super.getVALOR_BASICO_EXPENSAS()
 
-		                + "\n" + "Dpt Monoambiente: " + super.getEXTRA_MONOAMBIENTE() + " \n" + "TOTAL PAGADO: " + this.pagoExpensa + "\n" + "EXPENSA ADEUDADA: " +getValorAPagarExpensas() ;
+						+ "\n" + "Dpt Monoambiente: " + super.getEXTRA_MONOAMBIENTE() + " \n" + "TOTAL PAGADO: "
+						+ this.pagoExpensa + "\n" + "EXPENSA ADEUDADA: " + getValorAPagarExpensas();
 			}
 		}
 		return null;
@@ -87,7 +91,7 @@ public class Monoambiente extends Departamento {
 
 		return estadoDeExpensa;
 	}
-	
+
 	public Integer getValorAPagarExpensas() {
 		return valorAPagarExpensas;
 	}

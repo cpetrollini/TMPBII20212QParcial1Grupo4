@@ -11,26 +11,28 @@ public class AdministracionConsorcio {
 		this.habitantes = new Habitante[10];
 		this.recibos = new Departamento[10];
 	}
-	
-	// INGRESAR UN RECIBO DE PAGO DE EXPENSAS 
+
+	// INGRESAR UN RECIBO DE PAGO DE EXPENSAS
 	public boolean ingresarRecibo(Integer numero, Integer piso) {
 		boolean agregado = false;
 		for (int i = 0; i < departamentos.length; i++) {
 
 			if (departamentos[i] != null) {
 				if (departamentos[i].getPiso().equals(piso) && departamentos[i].getNumero().equals(numero)) {
-					if(departamentos[i].toString()!=null) {
-					recibos[i] = departamentos[i];
-					agregado = true;
+					if (departamentos[i].toString() != null) {
+						recibos[i] = departamentos[i];
+						agregado = true;
 
-					break;
-				}}
+						break;
+					}
+				}
 			}
 		}
 
 		return agregado;
 	}
-// LISTADO DE RECIBOS
+
+	// LISTADO DE RECIBOS
 	public String toString() {
 		String resumenDeExpensasPagadas = "";
 		for (int i = 0; i < recibos.length; i++) {
@@ -41,17 +43,15 @@ public class AdministracionConsorcio {
 		return resumenDeExpensasPagadas;
 	}
 
-
-	
-//	NUMERO DE DEUDORES
+	// NUMERO DE DEUDORES
 	public Integer cuantosDptsDebenExpensas() {
 
-		Integer deudores=0;
+		Integer deudores = 0;
 		for (int i = 0; i < departamentos.length; i++) {
 
 			if (departamentos[i] != null) {
 				if (departamentos[i].getEstadoDeExpensa()) {
-					deudores++; 
+					deudores++;
 				}
 			}
 		}
@@ -59,7 +59,7 @@ public class AdministracionConsorcio {
 
 	}
 
-	// AGREGAR DEPARTAMENTO SIN REPETIDOS
+	// AGREGAR DEPARTAMENTO
 	public boolean ingresarDepartamento(Departamento nuevo) {
 		boolean agregado = false;
 		boolean repetido = false;
@@ -74,19 +74,10 @@ public class AdministracionConsorcio {
 		return agregado;
 	}
 
-	// AGREGAR HABITANTES SIN REPETIDOS
+	// AGREGAR HABITANTES
 	public boolean ingresarHabitante(Habitante nuevo) {
 		boolean agregado = false;
 		boolean repetido = false;
-
-		for (int i = 0; i < habitantes.length; i++) {
-			if (habitantes != null) {
-				if (habitantes[i].getDni().equals(nuevo.getDni())) {
-					repetido = true;
-					break;
-				}
-			}
-		}
 
 		for (int i = 0; i < habitantes.length; i++) {
 			if (habitantes[i] == null && repetido == false) {
