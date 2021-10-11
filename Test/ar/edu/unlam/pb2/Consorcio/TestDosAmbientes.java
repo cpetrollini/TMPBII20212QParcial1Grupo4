@@ -45,7 +45,7 @@ public class TestDosAmbientes {
 
 		Integer servicios = departamentoDosAmbientes.getMontoTotalAPagarServicios();
 		Integer ExpensasBasicas = departamentoDosAmbientes.getVALOR_BASICO_EXPENSAS();
-		Integer ambienteExtra = departamentoDosAmbientes.getEXTRA_MONOAMBIENTE();
+		Integer ambienteExtra = departamentoDosAmbientes.getEXTRA_DOSAMBIENTES();
 
 		Integer serviciosTotales = servicios + ExpensasBasicas + ambienteExtra;
 
