@@ -5,8 +5,8 @@ public class Monoambiente extends Departamento {
 	private Integer pagoExtraordinario;// extras por mantenimiento
 	private Integer montoTotalAPagarServicios;// luz y agua
 	private Integer valorAPagarExpensas;
-	private final Integer EXTRA_COCHERA = 2000;
-	private final Integer EXTRA_TIPO_DE_DEPARTAMENTO_MONOAMBIENTE = 1000;
+	
+	
 
 	public Monoambiente(Integer piso, Integer numero, Boolean cochera, Integer pagoExtraordinario) {
 		super(piso, numero, cochera);
@@ -14,8 +14,7 @@ public class Monoambiente extends Departamento {
 		this.montoTotalAPagarServicios = 0;
 		this.pagoExtraordinario = pagoExtraordinario;
 		this.valorAPagarExpensas = 0;
-
-		setDepartamento(getDepartamento().MONOAMBIENTE);
+		super.setTipoDepartamento(TipoDeDepartamento.MONOAMBIENTE);
 	}
 
 	@Override
@@ -30,10 +29,10 @@ public class Monoambiente extends Departamento {
 	public Integer PagoDeExpensas() {
 
 		if (super.getCochera()) {
-			this.valorAPagarExpensas += EXTRA_COCHERA;
+			this.valorAPagarExpensas += Departamento.getEXTRA_COCHERA();
 		}
 
-		this.valorAPagarExpensas += super.getVALOR_BASICO_EXPENSAS() + this.EXTRA_TIPO_DE_DEPARTAMENTO_MONOAMBIENTE
+		this.valorAPagarExpensas += super.getVALOR_BASICO_EXPENSAS() + Departamento.getEXTRA_MONOAMBIENTE()
 				+ this.montoTotalAPagarServicios;
 
 		return this.valorAPagarExpensas;

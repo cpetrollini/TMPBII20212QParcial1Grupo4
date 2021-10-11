@@ -5,13 +5,16 @@ public abstract class Departamento {
 	private Integer piso;
 	private Integer numero;
 	private Boolean cochera;
-	private final Integer VALOR_BASICO_EXPENSAS = 2000;
+	private static Integer VALOR_BASICO_EXPENSAS = 2000;
+	private static Integer EXTRA_COCHERA = 2000;
+	private static Integer EXTRA_MONOAMBIENTE = 10;
+	private static Integer EXTRA_DOSAMBIENTES = 20;
+	private static Integer EXTRA_TRESAMBIENTES = 30;
 	private Integer servicioComunes;// luz y agua
-
-	private TipoDeDepartamento departamento;
+	
+	private TipoDeDepartamento tipoDepartamento; //cambie el nombre de la variable para que sea mas claro de que se trata
 
 	public Departamento(Integer piso, Integer numero, Boolean cochera) {
-
 		this.piso = piso;
 		this.numero = numero;
 		this.cochera = cochera;
@@ -65,12 +68,47 @@ public abstract class Departamento {
 		this.servicioComunes = servicioComunes;
 	}
 
-	public TipoDeDepartamento getDepartamento() {
-		return departamento;
+	public TipoDeDepartamento getTipoDepartamento() {
+		return tipoDepartamento;
 	}
 
-	public void setDepartamento(TipoDeDepartamento departamento) {
-		this.departamento = departamento;
+	public void setTipoDepartamento(TipoDeDepartamento departamento) {
+		this.tipoDepartamento = departamento;
 	}
+
+	public static Integer getEXTRA_COCHERA() {
+		return EXTRA_COCHERA;
+	}
+
+	public static void setEXTRA_COCHERA(Integer eXTRA_COCHERA) {
+		EXTRA_COCHERA = eXTRA_COCHERA;
+	}
+
+	public static Integer getEXTRA_MONOAMBIENTE() {
+		return EXTRA_MONOAMBIENTE;
+	}
+
+	public static void setEXTRA_MONOAMBIENTE(Integer eXTRA_MONOAMBIENTE) {
+		EXTRA_MONOAMBIENTE = eXTRA_MONOAMBIENTE;
+	}
+
+	public static Integer getEXTRA_DOSAMBIENTES() {
+		return EXTRA_DOSAMBIENTES;
+	}
+
+	public static void setEXTRA_DOSAMBIENTES(Integer eXTRA_DOSAMBIENTES) {
+		EXTRA_DOSAMBIENTES = eXTRA_DOSAMBIENTES;
+	}
+
+	public static Integer getEXTRA_TRESAMBIENTES() {
+		return EXTRA_TRESAMBIENTES;
+	}
+
+	public static void setEXTRA_TRESAMBIENTES(Integer eXTRA_TRESAMBIENTES) {
+		EXTRA_TRESAMBIENTES = eXTRA_TRESAMBIENTES;
+	}
+
+	
+	
 //
 }
