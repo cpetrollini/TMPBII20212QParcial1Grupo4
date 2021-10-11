@@ -1,5 +1,5 @@
 package ar.edu.unlam.pb2.Consorcio;
 
 public enum TipoDeDepartamento {
-	MONOAMBIENTE, DOSAMBIENTES, TRESAMBIENTES
+	MONOAMBIENTE, DOS_AMBIENTES, TRES_AMBIENTES
 }
