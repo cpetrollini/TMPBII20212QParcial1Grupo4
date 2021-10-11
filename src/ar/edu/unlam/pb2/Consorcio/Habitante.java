@@ -9,25 +9,31 @@ public abstract class Habitante {
 	private Departamento departamento;
 	private Factura[] facturasAPagar;
 
-
-
-	public Habitante(Integer dni, String nombre, String apellido, Departamento deptoQueHabita) {
+	public Habitante(Integer dni, String nombre, String apellido) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.departamento = deptoQueHabita;
+		this.facturasAPagar = new Factura[100];
 	}
 
-	public abstract void pagarFactura(Integer mes);
-	//cambia el estado de una factura a pagada dependiendo del mes
-	
-//	public abstract Factura[] filtrarUnaFactura(Habitante habitante, Factura[] arrayAFiltrar);
-	
 	public abstract Factura[] getFacturasAPagar();
-	//obtiene las facturas a pagar. en la clase inquilino se va a sobreescribir el metodo filtrando solo las 
-	//facturas que corresponden a los meses de su contrato, por lo tanto, un inquilino solo puede pagar las
-	//facturas que le corresponden
-	
+	// obtiene las facturas a pagar. en la clase inquilino se va a sobreescribir el
+	// metodo filtrando solo las
+	// facturas que corresponden a los meses de su contrato, por lo tanto, un
+	// inquilino solo puede pagar las
+	// facturas que le corresponden
+
+	public void pagarFactura(Integer mes) {
+		Factura[] arrayDeFacturasAPagar = this.getFacturasAPagar();
+		for (int i = 0; i < arrayDeFacturasAPagar.length; i++) {
+			if (arrayDeFacturasAPagar[i] != null) {
+				if (arrayDeFacturasAPagar[i].getMes().equals(mes)) {
+					arrayDeFacturasAPagar[i].setPagada(true);
+				}
+			}
+		}
+	}
+
 	public Departamento getDepartamento() {
 		return departamento;
 	}
@@ -37,7 +43,7 @@ public abstract class Habitante {
 	}
 
 	public Object getDni() {
-		
+
 		return dni;
 	}
 
@@ -65,11 +71,9 @@ public abstract class Habitante {
 			return false;
 		return true;
 	}
-	
+
 	public void setFacturasAPagar() {
 		this.facturasAPagar = this.getFacturasAPagar();
 	}
-	
-	
 
 }

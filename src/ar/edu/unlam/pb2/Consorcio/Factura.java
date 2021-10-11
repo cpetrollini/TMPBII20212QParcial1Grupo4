@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Factura {
 
 	private Double valor;
-	private static int MES; 
+	private static int MES;
 	private Integer mesDeLaFactura;
 	private static int ANIO = 2021;
 	private Departamento departamento;
@@ -21,16 +21,13 @@ public class Factura {
 		this.mesDeLaFactura = MES;
 	}
 
-	
 	public Boolean getPagada() {
 		return pagada;
 	}
 
-
 	public void setPagada(Boolean pagada) {
 		this.pagada = pagada;
 	}
-
 
 	public Double getPrecio() {
 		return valor;
@@ -52,13 +49,12 @@ public class Factura {
 		this.habitante = habitante;
 	}
 
-
 	public Double getValor() {
 		return valor;
 	}
 
 	public static void setMES(int MES) {
-		if(MES>=12) {
+		if (MES >= 12) {
 			Factura.MES = 1;
 			Factura.ANIO++;
 		}
@@ -68,7 +64,6 @@ public class Factura {
 	public int hashCode() {
 		return Objects.hash(mesDeLaFactura);
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -82,17 +77,12 @@ public class Factura {
 		return Objects.equals(mesDeLaFactura, other.mesDeLaFactura);
 	}
 
-
 	public Integer getMesDeLaFactura() {
 		return mesDeLaFactura;
 	}
 
-
 	public void setMesDeLaFactura(Integer mesDeLaFactura) {
 		this.mesDeLaFactura = mesDeLaFactura;
 	}
-	
-	
-	
 
 }

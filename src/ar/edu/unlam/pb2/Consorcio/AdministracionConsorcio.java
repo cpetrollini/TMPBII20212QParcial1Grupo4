@@ -17,7 +17,7 @@ public class AdministracionConsorcio {
 		this.habitantes = new Habitante[4];
 		this.habitantesConExpensasAlDia = new Habitante[4];
 	}
-
+	
 	public boolean agregarDepartamento(Departamento nuevo) {
 		boolean agregado = false;
 		for (int i = 0; i < departamentos.length; i++) {
@@ -120,6 +120,14 @@ public class AdministracionConsorcio {
 			}
 		}
 		return encontrado;
+	}
+	
+	public Departamento[] getDepartamentos() {
+		return departamentos;
+	}
+
+	public void setDepartamentos(Departamento[] departamentos) {
+		this.departamentos = departamentos;
 	}
 
 }
